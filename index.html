@@ -1,0 +1,558 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2867
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="zh-TW">\
+<head>\
+    <meta charset="UTF-8">\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <meta name="description" content="Clawdbot Guide - \uc0\u35443 \u30433 \u30340  Clawbot (moltbot, openClaw) \u23433 \u35037 \u33287 \u37096 \u32626 \u25945 \u23416 \u12290 ">\
+    <title>Clawdbot Guide | The AI That Actually Does Things</title>\
+    \
+    <link rel="preconnect" href="https://fonts.googleapis.com">\
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">\
+    \
+    <style>\
+        :root \{\
+            --accent-red: #FF4D4D;\
+            --bg-dark: #050505;\
+            --bg-card: #0F0F0F;\
+            --border-color: #1A1A1A;\
+            --text-main: #FFFFFF;\
+            --text-muted: #8E8E93;\
+            --nav-height: 70px;\
+        \}\
+\
+        * \{ box-sizing: border-box; margin: 0; padding: 0; \}\
+\
+        html \{ scroll-behavior: smooth; \}\
+\
+        body \{\
+            background-color: var(--bg-dark);\
+            color: var(--text-main);\
+            font-family: 'Plus Jakarta Sans', sans-serif;\
+            line-height: 1.6;\
+            overflow-x: hidden;\
+            -webkit-font-smoothing: antialiased;\
+        \}\
+\
+        /* Navigation Bar */\
+        nav \{\
+            height: var(--nav-height);\
+            background: rgba(5, 5, 5, 0.85);\
+            backdrop-filter: saturate(180%) blur(20px);\
+            border-bottom: 1px solid var(--border-color);\
+            position: fixed;\
+            top: 0; left: 0; right: 0;\
+            display: flex;\
+            align-items: center;\
+            z-index: 1000;\
+        \}\
+\
+        .nav-container \{\
+            display: flex;\
+            justify-content: space-between;\
+            align-items: center;\
+            width: 100%;\
+            max-width: 1200px;\
+            margin: 0 auto;\
+            padding: 0 40px;\
+        \}\
+\
+        .nav-left \{ display: flex; align-items: center; gap: 30px; \}\
+\
+        .logo \{\
+            font-weight: 800;\
+            font-size: 1.25rem;\
+            color: var(--text-main);\
+            text-decoration: none;\
+            display: flex;\
+            align-items: center;\
+            gap: 10px;\
+        \}\
+\
+        /* Icon Only Red, No Background Box */\
+        .logo-icon \{\
+            width: 32px;\
+            height: 32px;\
+            display: flex;\
+            align-items: center;\
+            justify-content: center;\
+        \}\
+\
+        .logo-icon svg \{ \
+            fill: var(--accent-red); \
+            width: 32px; \
+            height: 32px;\
+            filter: drop-shadow(0 0 8px rgba(255, 77, 77, 0.3));\
+        \}\
+\
+        .nav-links \{ display: flex; gap: 20px; \}\
+        .nav-links a \{ color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: 0.3s; font-weight: 600; \}\
+        .nav-links a:hover \{ color: var(--text-main); \}\
+\
+        .lang-switcher \{ display: flex; gap: 8px; \}\
+        .lang-btn \{\
+            background: transparent;\
+            border: 1px solid var(--border-color);\
+            color: var(--text-muted);\
+            padding: 5px 12px;\
+            border-radius: 20px;\
+            font-size: 0.8rem;\
+            cursor: pointer;\
+            transition: 0.3s;\
+        \}\
+        .lang-btn.active \{ border-color: var(--accent-red); color: var(--text-main); background: rgba(255, 77, 77, 0.1); \}\
+\
+        .container \{\
+            max-width: 1100px;\
+            margin: 0 auto;\
+            padding: 120px 20px 100px;\
+        \}\
+\
+        /* Hero Intro */\
+        .hero \{\
+            text-align: center;\
+            padding: 80px 0 100px;\
+            display: flex;\
+            flex-direction: column;\
+            align-items: center;\
+        \}\
+        \
+        /* Hero Logo - Icon only, large and red */\
+        .hero-logo-container \{\
+            margin-bottom: 24px;\
+        \}\
+        .hero-logo-container svg \{ \
+            width: 80px; \
+            height: 80px; \
+            fill: var(--accent-red);\
+            filter: drop-shadow(0 0 20px rgba(255, 77, 77, 0.4));\
+        \}\
+        \
+        .hero h1 \{\
+            font-size: clamp(3.5rem, 10vw, 6rem);\
+            font-weight: 800;\
+            letter-spacing: -3px;\
+            line-height: 1;\
+            margin-bottom: 16px;\
+            background: linear-gradient(to bottom, #FFFFFF 60%, #A0A0A0);\
+            -webkit-background-clip: text;\
+            -webkit-text-fill-color: transparent;\
+        \}\
+        \
+        .hero .sub-headline \{\
+            color: var(--accent-red);\
+            font-size: 1.1rem;\
+            font-weight: 800;\
+            letter-spacing: 4px;\
+            text-transform: uppercase;\
+            margin-bottom: 40px;\
+        \}\
+\
+        .hero p \{\
+            color: #BBBBBB;\
+            font-size: 1.4rem;\
+            max-width: 800px;\
+            margin: 0 auto;\
+            line-height: 1.5;\
+            font-weight: 400;\
+        \}\
+\
+        .section-title \{\
+            font-size: 1.5rem;\
+            font-weight: 800;\
+            color: var(--text-main);\
+            margin-bottom: 32px;\
+            display: flex;\
+            align-items: center;\
+            gap: 10px;\
+        \}\
+        .section-title::before \{ content: '>'; color: var(--accent-red); \}\
+\
+        /* Terminal Style */\
+        .terminal \{\
+            background: #000;\
+            border: 1px solid var(--border-color);\
+            border-radius: 12px;\
+            padding: 24px;\
+            font-family: 'JetBrains Mono', monospace;\
+            position: relative;\
+            margin-bottom: 20px;\
+        \}\
+        .terminal-dots \{ display: flex; gap: 6px; margin-bottom: 20px; \}\
+        .dot \{ width: 10px; height: 10px; border-radius: 50%; background: #333; \}\
+        .code-row \{ display: flex; gap: 15px; color: #888; font-size: 1rem; \}\
+        .code-row code \{ color: #fff; \}\
+        .copy-trigger \{ position: absolute; top: 20px; right: 20px; background: transparent; border: 1px solid var(--border-color); color: var(--text-muted); padding: 4px 10px; border-radius: 4px; font-size: 0.7rem; cursor: pointer; \}\
+\
+        /* Accordion Style */\
+        .accordion \{\
+            background: var(--bg-card);\
+            border: 1px solid var(--border-color);\
+            border-radius: 16px;\
+            overflow: hidden;\
+            margin-bottom: 80px;\
+        \}\
+        .accordion-header \{\
+            padding: 20px 24px;\
+            cursor: pointer;\
+            display: flex;\
+            justify-content: space-between;\
+            align-items: center;\
+            background: #121212;\
+            transition: 0.2s;\
+            font-weight: 700;\
+        \}\
+        .accordion-header:hover \{ background: #1a1a1a; \}\
+        .accordion-content \{\
+            padding: 0;\
+            max-height: 0;\
+            overflow: hidden;\
+            transition: max-height 0.4s ease, padding 0.3s ease;\
+            background: var(--bg-card);\
+        \}\
+        .accordion-content.open \{ padding: 32px; max-height: 3000px; \}\
+\
+        /* Feature Cards */\
+        .features-grid \{\
+            display: grid;\
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));\
+            gap: 20px;\
+            margin-bottom: 80px;\
+        \}\
+        .feature-card \{\
+            background: var(--bg-card);\
+            border: 1px solid var(--border-color);\
+            padding: 32px;\
+            border-radius: 16px;\
+            transition: 0.3s;\
+            display: flex;\
+            flex-direction: column;\
+            gap: 16px;\
+        \}\
+        .feature-card:hover \{ border-color: var(--accent-red); transform: translateY(-4px); \}\
+        .feature-icon-svg \{ width: 32px; height: 32px; stroke: var(--accent-red); fill: none; stroke-width: 2; \}\
+        .feature-card h3 \{ font-size: 1.25rem; font-weight: 800; color: #fff; \}\
+        .feature-card p \{ color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; \}\
+\
+        /* Video Section */\
+        .video-grid \{\
+            display: grid;\
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));\
+            gap: 24px;\
+        \}\
+        .video-card \{\
+            background: var(--bg-card);\
+            border: 1px solid var(--border-color);\
+            border-radius: 20px;\
+            overflow: hidden;\
+            transition: 0.3s;\
+            cursor: pointer;\
+        \}\
+        .video-card:hover \{ border-color: var(--accent-red); \}\
+        .thumb-container \{\
+            position: relative;\
+            width: 100%;\
+            aspect-ratio: 16/9;\
+            background-size: cover;\
+            background-position: center;\
+        \}\
+        .play-btn \{\
+            position: absolute;\
+            top: 50%; left: 50%;\
+            transform: translate(-50%, -50%);\
+            width: 60px; height: 60px;\
+            background: var(--accent-red);\
+            border-radius: 50%;\
+            display: flex; align-items: center; justify-content: center;\
+        \}\
+        .play-btn svg \{ fill: #fff; width: 24px; height: 24px; margin-left: 4px; \}\
+        .video-info \{ padding: 20px; \}\
+        .video-tag \{ font-size: 0.7rem; color: var(--accent-red); font-weight: 800; margin-bottom: 5px; display: block; \}\
+        .video-title \{ font-size: 1rem; font-weight: 700; color: #fff; \}\
+\
+        footer \{\
+            text-align: center;\
+            padding: 80px 20px;\
+            color: #444;\
+            font-size: 0.8rem;\
+            border-top: 1px solid var(--border-color);\
+        \}\
+\
+        @media (max-width: 768px) \{\
+            .nav-links \{ display: none; \}\
+            .nav-container \{ padding: 0 20px; \}\
+            .hero h1 \{ font-size: 3.5rem; \}\
+            .hero p \{ font-size: 1.1rem; \}\
+        \}\
+    </style>\
+</head>\
+<body>\
+\
+    <nav>\
+        <div class="nav-container">\
+            <div class="nav-left">\
+                <a href="#" class="logo">\
+                    <div class="logo-icon">\
+                        <svg viewBox="0 0 24 24"><path d="M12,2C11.45,2,11,2.45,11,3v1.09C7.03,4.57,4,7.93,4,12c0,0.38,0.03,0.75,0.08,1.11L2.12,14.07c-0.45,0.3-0.58,0.91-0.28,1.36 c0.3,0.45,0.91,0.58,1.36,0.28l1.37-0.91C5.55,16.89,8.44,19,12,19s6.45-2.11,7.43-4.2l1.37,0.91c0.45,0.3,1.06,0.17,1.36-0.28 c0.3-0.45,0.17-1.06-0.28-1.36l-1.96-0.96C19.97,12.75,20,12.38,20,12c0-4.07-3.03-7.43-7-7.91V3C13,2.45,12.55,2,12,2z M7,10 c0.55,0,1,0.45,1,1c0,0.55-0.45,1-1,1s-1-0.45-1-1C6,10.45,6.45,10,7,10z M17,10c0.55,0,1,0.45,1,1c0,0.55-0.45,1-1,1s-1-0.45-1-1 C16,10.45,16.45,10,17,10z M12,20c-1.1,0-2,0.9-2,2h4C14,20.9,13.1,20,12,20z"/></svg>\
+                    </div>\
+                    Clawdbot Guide\
+                </a>\
+                <div class="nav-links">\
+                    <a href="#install" data-lang-nav="nav-install">\uc0\u23433 \u35037 \u25351 \u21335 </a>\
+                    <a href="#features" data-lang-nav="nav-features">\uc0\u21151 \u33021 \u29305 \u40670 </a>\
+                    <a href="#videos" data-lang-nav="nav-videos">\uc0\u25945 \u23416 \u24433 \u29255 </a>\
+                </div>\
+            </div>\
+            <div class="lang-switcher">\
+                <button class="lang-btn active" onclick="switchLang('zh-tw')">\uc0\u32321 \u20013 </button>\
+                <button class="lang-btn" onclick="switchLang('zh-cn')">\uc0\u31616 \u20013 </button>\
+                <button class="lang-btn" onclick="switchLang('en')">EN</button>\
+            </div>\
+        </div>\
+    </nav>\
+\
+    <div class="container">\
+        \
+        <header class="hero">\
+            <div class="hero-logo-container">\
+                <svg viewBox="0 0 24 24"><path d="M12,2C11.45,2,11,2.45,11,3v1.09C7.03,4.57,4,7.93,4,12c0,0.38,0.03,0.75,0.08,1.11L2.12,14.07c-0.45,0.3-0.58,0.91-0.28,1.36 c0.3,0.45,0.91,0.58,1.36,0.28l1.37-0.91C5.55,16.89,8.44,19,12,19s6.45-2.11,7.43-4.2l1.37,0.91c0.45,0.3,1.06,0.17,1.36-0.28 c0.3-0.45,0.17-1.06-0.28-1.36l-1.96-0.96C19.97,12.75,20,12.38,20,12c0-4.07-3.03-7.43-7-7.91V3C13,2.45,12.55,2,12,2z M7,10 c0.55,0,1,0.45,1,1c0,0.55-0.45,1-1,1s-1-0.45-1-1C6,10.45,6.45,10,7,10z M17,10c0.55,0,1,0.45,1,1c0,0.55-0.45,1-1,1s-1-0.45-1-1 C16,10.45,16.45,10,17,10z M12,20c-1.1,0-2,0.9-2,2h4C14,20.9,13.1,20,12,20z"/></svg>\
+            </div>\
+            <h1 data-lang="hero-title">Clawdbot Guide</h1>\
+            <div class="sub-headline" data-lang="hero-subline">THE AI THAT ACTUALLY DOES THINGS.</div>\
+            <p data-lang="hero-subtitle">\uc0\u35731 \u24744 \u30340 \u36890 \u35338 \u36575 \u39636 \u21270 \u36523 \u36229 \u32026 \u21161 \u29702 \u12290 \u36879 \u36942  WhatsApp \u25110  Telegram\u65292 \u35731  clawdbot (moltbot, OpenClaw) \u28858 \u24744 \u33258 \u21205 \u34389 \u29702 \u25910 \u20214 \u21283 \u12289 \u25490 \u23450 \u34892 \u20107 \u26310 \u20006 \u23436 \u25104 \u33322 \u29677 \u30331 \u27231 \u12290 \u24744 \u21482 \u38656 \u23560 \u27880 \u26044 \u37325 \u35201 \u20107 \u21209 \u65292 \u20854 \u39192 \u30340 \u20132 \u32102 \u23427 \u12290 </p>\
+        </header>\
+\
+        <section id="install">\
+            <div class="section-title" data-lang="quick-start">clawdbot (moltbot, OpenClaw) \uc0\u25351 \u21335 \u25945 \u23416 </div>\
+            <div class="terminal">\
+                <div class="terminal-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>\
+                <button class="copy-trigger" onclick="copyCode(this)">Copy</button>\
+                <div class="code-row">\
+                    <span>$</span>\
+                    <code>curl -fsSL https://openclaw.ai/install.sh | bash</code>\
+                </div>\
+            </div>\
+        </section>\
+\
+        <div class="accordion">\
+            <div class="accordion-header" onclick="toggleAccordion(this)">\
+                <span data-lang="tutorial-header">\uc0\u55357 \u56534  \u23637 \u38283  clawdbot (moltbot, OpenClaw) \u28145 \u24230 \u23433 \u35037 \u27493 \u39519  (Full Documentation)</span>\
+                <span id="chevron">\uc0\u9660 </span>\
+            </div>\
+            <div class="accordion-content" id="tutorial-content">\
+                <div class="tutorial-body" id="tutorial-body-content">\
+                </div>\
+            </div>\
+        </div>\
+\
+        <section id="features">\
+            <div class="section-title" data-lang="features-title">What It Does</div>\
+            <div class="features-grid" id="features-container">\
+            </div>\
+        </section>\
+\
+        <section id="videos">\
+            <div class="section-title" data-lang="videos-title">\uc0\u24433 \u29255 \u25945 \u23416 \u23560 \u21312 </div>\
+            <div class="video-grid">\
+                <div class="video-card" onclick="playVideo(this, 'OSK9RiohGHo')">\
+                    <div class="thumb-container" style="background-image: url('https://img.youtube.com/vi/OSK9RiohGHo/maxresdefault.jpg');">\
+                        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>\
+                    </div>\
+                    <div class="video-info">\
+                        <span class="video-tag">ZH-TW</span>\
+                        <div class="video-title">Clawbot \uc0\u22522 \u30990 \u23433 \u35037 \u33287 \u21151 \u33021 \u20171 \u32057 </div>\
+                    </div>\
+                </div>\
+                <div class="video-card" onclick="playVideo(this, '657wlbtrzG8')">\
+                    <div class="thumb-container" style="background-image: url('https://img.youtube.com/vi/657wlbtrzG8/maxresdefault.jpg');">\
+                        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>\
+                    </div>\
+                    <div class="video-info">\
+                        <span class="video-tag">ZH-CN</span>\
+                        <div class="video-title">\uc0\u24555 \u36895 \u37096 \u32626 \u23526 \u25136 \u65306 openClaw \u37197 \u32622 \u33287  API \u25945 \u23416 </div>\
+                    </div>\
+                </div>\
+                <div class="video-card" onclick="playVideo(this, 'BhjK2Gr0Ryc')">\
+                    <div class="thumb-container" style="background-image: url('https://img.youtube.com/vi/BhjK2Gr0Ryc/maxresdefault.jpg');">\
+                        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>\
+                    </div>\
+                    <div class="video-info">\
+                        <span class="video-tag">ENGLISH</span>\
+                        <div class="video-title">Professional Setup: Moltbot VPS Guide</div>\
+                    </div>\
+                </div>\
+            </div>\
+        </section>\
+\
+    </div>\
+\
+    <footer>\
+        <p>\'a9 2026 Clawdbot Guide | \uc0\u38750 \u23448 \u26041 \u25351 \u21335 \u32178 \u31449 </p>\
+    </footer>\
+\
+    <script>\
+        const contentData = \{\
+            'zh-tw': \{\
+                'nav-install': '\uc0\u23433 \u35037 \u25351 \u21335 ', 'nav-features': '\u21151 \u33021 \u29305 \u40670 ', 'nav-videos': '\u25945 \u23416 \u24433 \u29255 ',\
+                'hero-title': 'Clawdbot Guide',\
+                'hero-subline': 'THE AI THAT ACTUALLY DOES THINGS.',\
+                'hero-subtitle': '\uc0\u35731 \u24744 \u30340 \u36890 \u35338 \u36575 \u39636 \u21270 \u36523 \u36229 \u32026 \u21161 \u29702 \u12290 \u36879 \u36942  WhatsApp \u25110  Telegram\u65292 \u35731  clawdbot (moltbot, OpenClaw) \u28858 \u24744 \u33258 \u21205 \u34389 \u29702 \u25910 \u20214 \u21283 \u12289 \u25490 \u23450 \u34892 \u20107 \u26310 \u20006 \u23436 \u25104 \u33322 \u29677 \u30331 \u27231 \u12290 \u24744 \u21482 \u38656 \u23560 \u27880 \u26044 \u37325 \u35201 \u20107 \u21209 \u65292 \u20854 \u39192 \u30340 \u20132 \u32102 \u23427 \u12290 ',\
+                'quick-start': 'clawdbot (moltbot, OpenClaw) \uc0\u25351 \u21335 \u25945 \u23416 ',\
+                'tutorial-header': '\uc0\u55357 \u56534  \u23637 \u38283  clawdbot (moltbot, OpenClaw) \u28145 \u24230 \u23433 \u35037 \u27493 \u39519  (Full Documentation)',\
+                'features-title': 'What It Does',\
+                'videos-title': '\uc0\u24433 \u29255 \u25945 \u23416 \u23560 \u21312 ',\
+                'features': [\
+                    \{ icon: 'home', title: '\uc0\u22312 \u24744 \u30340 \u27231 \u22120 \u19978 \u36939 \u34892 ', desc: '\u30456 \u23481  moltbot \u26550 \u27083 \u65292 \u25903 \u25588  Mac, Windows \u25110  Linux\u12290 Anthropic, OpenAI \u25110 \u26412 \u22320 \u27169 \u22411 \u12290 \u38928 \u35373 \u31169 \u23494 \u12290 ' \},\
+                    \{ icon: 'message', title: '\uc0\u20219 \u24847 \u32842 \u22825 \u36575 \u39636 ', desc: '\u22312  WhatsApp, Telegram, Discord, Slack, Signal \u29978 \u33267  iMessage \u20013 \u33287  AI \u23565 \u35441 \u12290 \u25903 \u25345 \u31169 \u35338 \u33287 \u32676 \u32842 \u12290 ' \},\
+                    \{ icon: 'brain', title: '\uc0\u25345 \u20037 \u35352 \u25014 ', desc: '\u23427 \u26371 \u35352 \u20303 \u24744 \u20006 \u35722 \u24471 \u29544 \u19968 \u28961 \u20108 \u12290 \u24744 \u30340 \u20559 \u22909 \u12289 \u24744 \u30340 \u35486 \u22659 \u12289 \u24744 \u30340 \u23560 \u23660  AI\u12290 ' \},\
+                    \{ icon: 'globe', title: '\uc0\u28687 \u35261 \u22120 \u25511 \u21046 ', desc: '\u23427 \u21487 \u20197 \u28687 \u35261 \u32178 \u38913 \u12289 \u22635 \u23531 \u34920 \u21934 \u20006 \u24478 \u20219 \u20309 \u32178 \u31449 \u25552 \u21462 \u25976 \u25818 \u12290 ' \},\
+                    \{ icon: 'terminal', title: '\uc0\u23436 \u25972 \u31995 \u32113 \u27402 \u38480 ', desc: '\u35712 \u21462 \u33287 \u23531 \u20837 \u27284 \u26696 \u12289 \u36939 \u34892  Shell \u25351 \u20196 \u12289 \u22519 \u34892 \u33139 \u26412 \u12290 \u25552 \u20379 \u27801 \u30418 \u33287 \u20840 \u27402 \u27169 \u24335 \u12290 ' \},\
+                    \{ icon: 'puzzle', title: '\uc0\u25216 \u33021 \u33287 \u25554 \u20214 ', desc: '\u36879 \u36942 \u31038 \u32676 \u25216 \u33021 \u25844 \u23637 \u21151 \u33021 \u65292 \u25110 \u33258 \u34892 \u27083 \u24314 \u12290 \u23427 \u29978 \u33267 \u21487 \u20197 \u28858 \u33258 \u24049 \u32232 \u23531 \u20195 \u30908 \u12290 ' \}\
+                ],\
+                'steps': [\
+                    \{ n: 1, t: '\uc0\u31995 \u32113 \u38656 \u27714 \u33287 \u29872 \u22659 \u28310 \u20633 ', c: '\u30906 \u20445 \u24744 \u30340  Mac\u12289 Windows \u25110  Linux \u31995 \u32113 \u24050 \u23433 \u35037  Node.js (\u24314 \u35696  v18 \u20197 \u19978 \u29256 \u26412 ) \u20197 \u21450  Git \u32066 \u31471 \u24037 \u20855 \u12290 Node.js \u26159 \u36939 \u34892  AI \u26680 \u24515 \u37007 \u36655 \u30340 \u22522 \u30990 \u12290 ' \},\
+                    \{ n: 2, t: '\uc0\u35079 \u35069 \u21407 \u22987 \u30908  (Clone Project)', c: '\u22312 \u32066 \u31471 \u27231 \u36664 \u20837  git clone \u20006 \u36899 \u32080 \u33267 \u23448 \u26041 \u20786 \u23384 \u24235 \u12290 \u19979 \u36617 \u23436 \u25104 \u24460 \u65292 \u36914 \u20837 \u36039 \u26009 \u22846 \u22519 \u34892  npm install \u20197 \u33258 \u21205 \u19979 \u36617 \u25152 \u26377 \u24517 \u35201 \u30340 \u30456 \u20381 \u22871 \u20214 \u33287  AI \u25511 \u21046 \u24341 \u25806 \u12290 ' \},\
+                    \{ n: 3, t: '\uc0\u35373 \u23450  .env \u29872 \u22659 \u35722 \u25976 ', c: '\u36889 \u19968 \u27493 \u26368 \u38364 \u37749 \u65306 \u23559  .env.example \u35079 \u35069 \u20006 \u37325 \u26032 \u21629 \u21517 \u28858  .env\u12290 \u22312 \u35041 \u38754 \u22635 \u20837 \u24744 \u30340  ANTHROPIC_API_KEY \u25110  OPENAI_API_KEY\u12290 \u33509 \u35201 \u38283 \u21855 \u28687 \u35261 \u22120 \u25511 \u21046 \u65292 \u38656 \u30906 \u20445 \u29872 \u22659 \u20013 \u23433 \u35037 \u20102  Playwright\u12290 ' \},\
+                    \{ n: 4, t: '\uc0\u20018 \u25509 \u36890 \u35338 \u36575 \u39636  (WhatsApp/Telegram)', c: '\u26681 \u25818 \u24744 \u30340 \u38656 \u27714 \u21855 \u29992  Provider\u12290 \u33509 \u20351 \u29992  WhatsApp\u65292 \u31995 \u32113 \u26371 \u24392 \u20986 \u19968 \u20491  QR Code\u65292 \u35531 \u20351 \u29992 \u25163 \u27231  App \u25475 \u25551 \u30331 \u20837 \u65307 \u33509 \u20351 \u29992  Telegram\u65292 \u35531 \u21521  @BotFather \u30003 \u35531  API Token \u20006 \u22635 \u20837 \u35373 \u23450 \u27284 \u12290 ' \},\
+                    \{ n: 5, t: '\uc0\u36914 \u38542 \u65306 \u37197 \u32622 \u26412 \u22320 \u27169 \u22411  (Local LLM)', c: 'Clawbot \u25903 \u25588 \u36879 \u36942  Ollama \u36899 \u32080 \u26412 \u22320 \u27169 \u22411 \u12290 \u22312 \u35373 \u23450 \u27284 \u20013 \u23559  PROVIDER \u35373 \u28858  ollama\u65292 \u20006 \u25351 \u23450 \u27169 \u22411 \u21517 \u31281  (\u22914  llama3)\u12290 \u36889 \u21487 \u20197 \u30906 \u20445 \u24744 \u30340 \u23565 \u35441 \u25976 \u25818 \u23436 \u20840 \u19981 \u38626 \u38283 \u26412 \u27231 \u20282 \u26381 \u22120 \u12290 ' \},\
+                    \{ n: 6, t: '\uc0\u21855 \u21205 \u33287 \u28204 \u35430 ', c: '\u22519 \u34892  npm run dev \u25110  npm start\u12290 \u30070 \u32066 \u31471 \u27231 \u39023 \u31034 \u12300 Ready\u12301 \u26178 \u65292 \u21363 \u21487 \u24478 \u25163 \u27231 \u30332 \u36865 \u31532 \u19968 \u21063 \u35338 \u24687 \u28204 \u35430 \u12290 \u24314 \u35696 \u20808 \u22039 \u35430 \u31777 \u21934 \u30340 \u20219 \u21209 \u65292 \u20363 \u22914 \u12300 \u24171 \u25105 \u32317 \u32080 \u26368 \u36817 \u30340 \u19968 \u23553  Email\u12301 \u12290 ' \}\
+                ]\
+            \},\
+            'zh-cn': \{\
+                'nav-install': '\uc0\u23433 \u35013 \u25351 \u21335 ', 'nav-features': '\u21151 \u33021 \u29305 \u28857 ', 'nav-videos': '\u25945 \u23398 \u24433 \u29255 ',\
+                'hero-title': 'Clawdbot Guide',\
+                'hero-subline': 'THE AI THAT ACTUALLY DOES THINGS.',\
+                'hero-subtitle': '\uc0\u35753 \u24744 \u30340 \u36890 \u35759 \u36719 \u20214 \u21270 \u36523 \u20026 \u36229 \u32423 \u21161 \u29702 \u12290 \u36890 \u36807  WhatsApp \u25110  Telegram\u65292 \u35753  clawdbot (moltbot, OpenClaw) \u20026 \u24744 \u33258 \u21160 \u22788 \u29702 \u25910 \u20214 \u31665 \u12289 \u25490 \u23450 \u26085 \u21382 \u24182 \u23436 \u25104 \u33322 \u29677 \u30331 \u26426 \u12290 \u24744 \u21482 \u38656 \u19987 \u27880 \u20110 \u37325 \u35201 \u20107 \u21153 \u65292 \u20854 \u20313 \u30340 \u20132 \u32473 \u23427 \u12290 ',\
+                'quick-start': 'clawdbot (moltbot, OpenClaw) \uc0\u25351 \u21335 \u25945 \u23398 ',\
+                'tutorial-header': '\uc0\u55357 \u56534  \u23637 \u24320  clawdbot (moltbot, OpenClaw) \u28145 \u24230 \u23433 \u35013 \u27493 \u39588  (Full Documentation)',\
+                'features-title': 'What It Does',\
+                'videos-title': '\uc0\u35270 \u39057 \u25945 \u23398 \u19987 \u21306 ',\
+                'features': [\
+                    \{ icon: 'home', title: '\uc0\u22312 \u24744 \u30340 \u26426 \u22120 \u19978 \u36816 \u34892 ', desc: '\u20860 \u23481  moltbot \u26550 \u26500 \u65292 \u25903 \u25345  Mac, Windows \u25110  Linux\u12290 Anthropic, OpenAI \u25110 \u26412 \u22320 \u27169 \u22411 \u12290 \u39044 \u35774 \u31169 \u23494 \u12290 ' \},\
+                    \{ icon: 'message', title: '\uc0\u20219 \u24847 \u32842 \u22825 \u36719 \u20214 ', desc: '\u22312  WhatsApp, Telegram, Discord, Slack, Signal \u29978 \u33267  iMessage \u20013 \u19982  AI \u23545 \u35441 \u12290 \u25903 \u25345 \u31169 \u32842 \u19982 \u32676 \u32842 \u12290 ' \},\
+                    \{ icon: 'brain', title: '\uc0\u25345 \u20037 \u35760 \u24518 ', desc: '\u23427 \u20250 \u35760 \u20303 \u24744 \u24182 \u21464 \u24471 \u29420 \u19968 \u26080 \u20108 \u12290 \u24744 \u30340 \u20559 \u22909 \u12289 \u24744 \u30340 \u35821 \u22659 \u12289 \u24744 \u30340 \u19987 \u23646  AI\u12290 ' \},\
+                    \{ icon: 'globe', title: '\uc0\u27983 \u35272 \u22120 \u25511 \u21046 ', desc: '\u23427 \u21487 \u20197 \u27983 \u35272 \u32593 \u39029 \u12289 \u22635 \u20889 \u34920 \u21333 \u24182 \u20174 \u20219 \u20309 \u32593 \u31449 \u25552 \u21462 \u25968 \u25454 \u12290 ' \},\
+                    \{ icon: 'terminal', title: '\uc0\u23436 \u25972 \u31995 \u32479 \u26435 \u38480 ', desc: '\u35835 \u21462 \u19982 \u20889 \u20837 \u25991 \u20214 \u12289 \u36816 \u34892  Shell \u25351 \u20196 \u12289 \u25191 \u34892 \u33050 \u26412 \u12290 \u25552 \u20379 \u27801 \u30418 \u19982 \u20840 \u26435 \u27169 \u24335 \u12290 ' \},\
+                    \{ icon: 'puzzle', title: '\uc0\u25216 \u33021 \u19982 \u25554 \u20214 ', desc: '\u36890 \u36807 \u31038 \u21306 \u25216 \u33021 \u25193 \u23637 \u21151 \u33021 \u65292 \u25110 \u33258 \u34892 \u26500 \u24314 \u12290 \u23427 \u29978 \u33267 \u21487 \u20197 \u20026 \u33258 \u24049 \u32534 \u20889 \u20195 \u30721 \u12290 ' \}\
+                ],\
+                'steps': [\
+                    \{ n: 1, t: '\uc0\u31995 \u32479 \u38656 \u27714 \u19982 \u29615 \u22659 \u20934 \u22791 ', c: '\u30830 \u20445 \u24744 \u30340  Mac\u12289 Windows \u25110  Linux \u31995 \u32479 \u24050 \u23433 \u35013  Node.js (\u24314 \u35758  v18 \u20197 \u19978 \u29256 \u26412 ) \u20197 \u21450  Git \u32456 \u31471 \u24037 \u20855 \u12290 Node.js \u26159 \u36816 \u34892  AI \u26680 \u24515 \u36923 \u36753 \u30340 \u22522 \u30784 \u12290 ' \},\
+                    \{ n: 2, t: '\uc0\u20811 \u38534 \u28304 \u30721  (Clone Project)', c: '\u22312 \u32456 \u31471 \u36755 \u20837  git clone \u24182 \u38142 \u25509 \u33267 \u23448 \u26041 \u23384 \u20648 \u24211 \u12290 \u19979 \u36733 \u23436 \u25104 \u21518 \u65292 \u36827 \u20837 \u25991 \u20214 \u22841 \u25191 \u34892  npm install \u20197 \u33258 \u21160 \u19979 \u36733 \u25152 \u26377 \u24517 \u35201 \u30340 \u20381 \u36182 \u21253 \u19982  AI \u25511 \u21046 \u24341 \u25806 \u12290 ' \},\
+                    \{ n: 3, t: '\uc0\u35774 \u32622  .env \u29615 \u22659 \u21464 \u37327 ', c: '\u36825 \u19968 \u27493 \u26368 \u20851 \u38190 \u65306 \u23558  .env.example \u22797 \u21046 \u24182 \u37325 \u21629 \u21517 \u20026  .env\u12290 \u22312 \u37324 \u38754 \u22635 \u20837 \u24744 \u30340  ANTHROPIC_API_KEY \u25110  OPENAI_API_KEY\u12290 \u33509 \u35201 \u24320 \u21551 \u27983 \u35272 \u22120 \u25511 \u21046 \u65292 \u38656 \u30830 \u20445 \u29615 \u22659 \u20013 \u23433 \u35013 \u20102  Playwright\u12290 ' \},\
+                    \{ n: 4, t: '\uc0\u20018 \u25509 \u36890 \u35759 \u36719 \u20214  (WhatsApp/Telegram)', c: '\u26681 \u25454 \u24744 \u30340 \u38656 \u27714 \u21551 \u29992  Provider\u12290 \u33509 \u20351 \u29992  WhatsApp\u65292 \u31995 \u32479 \u20250 \u24377 \u20986 \u19968 \u20491  QR Code\u65292 \u35831 \u20351 \u29992 \u25163 \u26426  App \u25195 \u25551 \u30331 \u24405 \u65307 \u33509 \u20351 \u29992  Telegram\u65292 \u35831 \u21521  @BotFather \u30003 \u35831  API Token \u24182 \u22635 \u20837 \u37197 \u32622 \u25991 \u20214 \u12290 ' \},\
+                    \{ n: 5, t: '\uc0\u36827 \u38454 \u65306 \u37197 \u32622 \u26412 \u22320 \u27169 \u22411  (Local LLM)', c: 'Clawbot \u25903 \u25345 \u36890 \u36807  Ollama \u38142 \u25509 \u26412 \u22320 \u27169 \u22411 \u12290 \u22312 \u37197 \u32622 \u25991 \u20214 \u20013 \u23558  PROVIDER \u35774 \u20026  ollama\u65292 \u24182 \u25351 \u23450 \u27169 \u22411 \u21517 \u31216  (\u22914  llama3)\u12290 \u36825 \u21487 \u20197 \u30830 \u20445 \u24744 \u30340 \u23545 \u35805 \u25968 \u25454 \u23436 \u20840 \u19981 \u31163 \u24320 \u26412 \u26426 \u26381 \u21153 \u22120 \u12290 ' \},\
+                    \{ n: 6, t: '\uc0\u21551 \u21160 \u19982 \u27979 \u35797 ', c: '\u25191 \u34892  npm run dev \u25110  npm start\u12290 \u24403 \u32456 \u31471 \u26174 \u31034 \u12300 Ready\u12301 \u26102 \u65292 \u21363 \u21487 \u20174 \u25163 \u26426 \u21457 \u36865 \u31532 \u19968 \u26465 \u28040 \u24687 \u27979 \u35797 \u12290 \u24314 \u35758 \u20808 \u23581 \u35797 \u31616 \u21333 \u30340 \u20219 \u21153 \u65292 \u20363 \u22914 \u12300 \u24110 \u25105 \u24635 \u32467 \u26368 \u36817 \u30340 \u19968 \u23553  Email\u12301 \u12290 ' \}\
+                ]\
+            \},\
+            'en': \{\
+                'nav-install': 'Install Guide', 'nav-features': 'Features', 'nav-videos': 'Videos',\
+                'hero-title': 'Clawdbot Guide',\
+                'hero-subline': 'THE AI THAT ACTUALLY DOES THINGS.',\
+                'hero-subtitle': 'Turn your favorite messaging app into a powerhouse. With WhatsApp or Telegram, let clawdbot (moltbot, OpenClaw) automate your inbox, manage your calendar, and check you in for flights while you focus on what matters.',\
+                'quick-start': 'clawdbot (moltbot, OpenClaw) Guide',\
+                'tutorial-header': '\uc0\u55357 \u56534  Expand Full clawdbot (moltbot, OpenClaw) Installation Steps',\
+                'features-title': 'What It Does',\
+                'videos-title': 'Video Tutorials',\
+                'features': [\
+                    \{ icon: 'home', title: 'Runs on Your Machine', desc: 'Mac, Windows, or Linux. Works with Anthropic, OpenAI, or local models. Private by default.' \},\
+                    \{ icon: 'message', title: 'Any Chat App', desc: 'Talk to it on WhatsApp, Telegram, Discord, Slack, Signal, or iMessage. Works in DMs and group chats.' \},\
+                    \{ icon: 'brain', title: 'Persistent Memory', desc: 'Remembers you and becomes uniquely yours. Your preferences, your context, your AI.' \},\
+                    \{ icon: 'globe', title: 'Browser Control', desc: 'It can browse the web, fill forms, and extract data from any site.' \},\
+                    \{ icon: 'terminal', title: 'Full System Access', desc: 'Read and write files, run shell commands, execute scripts. Full access or sandboxed\'97your choice.' \},\
+                    \{ icon: 'puzzle', title: 'Skills & Plugins', desc: 'Extend with community skills or build your own. It can even write its own code.' \}\
+                ],\
+                'steps': [\
+                    \{ n: 1, t: 'Pre-requisites', c: 'Ensure your machine has Node.js (v18+) and Git installed. These are essential for running the bot core.' \},\
+                    \{ n: 2, t: 'Clone & Install', c: 'Run "git clone" followed by "npm install" to fetch all dependencies required for the AI engine.' \},\
+                    \{ n: 3, t: 'Configure Secrets', c: 'Copy .env.example to .env and input your API keys for Anthropic or OpenAI. This is required for the bot to think.' \},\
+                    \{ n: 4, t: 'Linking Chat Apps', c: 'Enable WhatsApp or Telegram in the config. For WhatsApp, you will need to scan a QR code via your mobile device.' \},\
+                    \{ n: 5, t: 'Local LLM Support', c: 'Optionally set up Ollama to run models locally for 100% privacy by switching the provider to Ollama in settings.' \},\
+                    \{ n: 6, t: 'Start & Deploy', c: 'Execute "npm run dev". Once you see the "Ready" status, try sending your first task via your chosen chat app.' \}\
+                ]\
+            \}\
+        \};\
+\
+        const icons = \{\
+            home: '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline>',\
+            message: '<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>',\
+            brain: '<path d="M9.5 2A5.5 5.5 0 0 0 4 7.5c0 1.25.4 2.4 1.1 3.33L4 14l3.5-.5c.85.5 1.85.8 2.9.8A5.5 5.5 0 0 0 15.9 10l3.5.5L16 7.17A5.5 5.5 0 0 0 10.5 2h-1z"></path><path d="M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>',\
+            globe: '<circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"></path>',\
+            terminal: '<polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line>',\
+            puzzle: '<path d="M12.4 13L11 12l1.4-1c.4-.3.6-.8.6-1.3V8a3 3 0 0 0-3-3h-1.7c-.5 0-1-.2-1.3-.6l-1-1.4-1 1.4c-.3.4-.8.6-1.3.6H6a3 3 0 0 0-3 3v1.7c0 .5-.2 1-.6 1.3L1 12l1.4 1c.4.3.6.8.6 1.3V16a3 3 0 0 0 3 3h1.7c.5 0 1 .2 1.3.6l1 1.4 1-1.4c.3-.4.8-.6 1.3-.6H11a3 3 0 0 0 3-3v-1.7c0-.5.2-1 .6-1.3z"></path>'\
+        \};\
+\
+        function switchLang(lang) \{\
+            if(!contentData[lang]) lang = 'zh-tw';\
+            document.querySelectorAll('.lang-btn').forEach(btn => \{\
+                btn.classList.toggle('active', btn.getAttribute('onclick').includes(lang));\
+            \});\
+\
+            const data = contentData[lang];\
+            document.querySelectorAll('[data-lang]').forEach(el => \{\
+                const key = el.getAttribute('data-lang');\
+                if (data[key]) el.innerText = data[key];\
+            \});\
+            document.querySelectorAll('[data-lang-nav]').forEach(el => \{\
+                const key = el.getAttribute('data-lang-nav');\
+                if (data[key]) el.innerText = data[key];\
+            \});\
+\
+            const featContainer = document.getElementById('features-container');\
+            featContainer.innerHTML = data.features.map(f => `\
+                <div class="feature-card">\
+                    <svg class="feature-icon-svg" viewBox="0 0 24 24">$\{icons[f.icon]\}</svg>\
+                    <h3>$\{f.title\}</h3>\
+                    <p>$\{f.desc\}</p>\
+                </div>\
+            `).join('');\
+\
+            const tutBody = document.getElementById('tutorial-body-content');\
+            tutBody.innerHTML = data.steps.map(s => `\
+                <div class="step-block" style="margin-bottom:30px; border-left: 2px solid var(--accent-red); padding-left: 20px;">\
+                    <h4 style="color:#fff; margin-bottom:10px; font-size: 1.1rem;">$\{s.n\}. $\{s.t\}</h4>\
+                    <p style="color:var(--text-muted); font-size:0.95rem; line-height: 1.7;">$\{s.c\}</p>\
+                </div>\
+            `).join('');\
+        \}\
+\
+        function toggleAccordion(header) \{\
+            const content = document.getElementById('tutorial-content');\
+            const chevron = document.getElementById('chevron');\
+            if (content.classList.contains('open')) \{\
+                content.classList.remove('open');\
+                chevron.innerText = '\uc0\u9660 ';\
+            \} else \{\
+                content.classList.add('open');\
+                chevron.innerText = '\uc0\u9650 ';\
+            \}\
+        \}\
+\
+        function copyCode(btn) \{\
+            const code = btn.nextElementSibling.querySelector('code').innerText;\
+            const temp = document.createElement('textarea');\
+            temp.value = code;\
+            document.body.appendChild(temp);\
+            temp.select();\
+            document.execCommand('copy');\
+            document.body.removeChild(temp);\
+            btn.innerText = 'Copied!';\
+            setTimeout(() => btn.innerText = 'Copy', 2000);\
+        \}\
+\
+        function playVideo(card, id) \{\
+            const container = card.querySelector('.thumb-container');\
+            container.innerHTML = `<iframe src="https://www.youtube.com/embed/$\{id\}?autoplay=1" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;\
+            card.onclick = null;\
+        \}\
+\
+        window.onload = () => switchLang('zh-tw');\
+    </script>\
+</body>\
+</html>}
