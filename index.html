@@ -306,7 +306,7 @@
             </div>
             <div class="lang-switcher">
                 <button class="lang-btn active" onclick="switchLang('zh-tw')">繁中</button>
-                <button class="lang-btn" onclick="switchLang('zh-cn')">简中</button>
+                <button class="lang-btn" onclick="switchLang('zh-cn')">簡中</button>
                 <button class="lang-btn" onclick="switchLang('en')">EN</button>
             </div>
         </div>
@@ -320,7 +320,7 @@
             </div>
             <h1 data-lang="hero-title">Clawdbot Guide</h1>
             <div class="sub-headline" data-lang="hero-subline">THE AI THAT ACTUALLY DOES THINGS.</div>
-            <p data-lang="hero-subtitle">讓您的通訊軟體化身超級助理。透過 WhatsApp 或 Telegram，讓 clawdbot (moltbot, OpenClaw) 為您自動處理收件匣、排定行事曆並完成航班登機。您只需專注於重要事務，其餘的交給它。</p>
+            <p data-lang="hero-subtitle">自動清理您的收件匣、發送電子郵件、管理日曆並協助您辦理登機手續。這一切，只需透過您常用的 WhatsApp 或 Telegram 即可完成。加入這個名字 clawdbot (moltbot, OpenClaw) 其餘不要亂動</p>
         </header>
 
         <section id="install">
@@ -336,11 +336,10 @@
         </section>
 
         <div class="accordion">
-            <div class="accordion-header" onclick="toggleAccordion(this)">
-                <span data-lang="tutorial-header">📖 展開 clawdbot (moltbot, OpenClaw) 深度安裝步驟 (Full Documentation)</span>
-                <span id="chevron">▼</span>
+            <div class="accordion-header" style="cursor: default;">
+                <span data-lang="tutorial-header">📖 clawdbot (moltbot, OpenClaw) 深度安裝步驟 (Full Documentation)</span>
             </div>
-            <div class="accordion-content" id="tutorial-content">
+            <div class="accordion-content open" id="tutorial-content">
                 <div class="tutorial-body" id="tutorial-body-content">
                 </div>
             </div>
@@ -354,34 +353,8 @@
 
         <section id="videos">
             <div class="section-title" data-lang="videos-title">影片教學專區</div>
-            <div class="video-grid">
-                <div class="video-card" onclick="playVideo(this, 'OSK9RiohGHo')">
-                    <div class="thumb-container" style="background-image: url('https://img.youtube.com/vi/OSK9RiohGHo/maxresdefault.jpg');">
-                        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-                    </div>
-                    <div class="video-info">
-                        <span class="video-tag">ZH-TW</span>
-                        <div class="video-title">Clawbot 基礎安裝與功能介紹</div>
-                    </div>
-                </div>
-                <div class="video-card" onclick="playVideo(this, '657wlbtrzG8')">
-                    <div class="thumb-container" style="background-image: url('https://img.youtube.com/vi/657wlbtrzG8/maxresdefault.jpg');">
-                        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-                    </div>
-                    <div class="video-info">
-                        <span class="video-tag">ZH-CN</span>
-                        <div class="video-title">快速部署實戰：openClaw 配置與 API 教學</div>
-                    </div>
-                </div>
-                <div class="video-card" onclick="playVideo(this, 'BhjK2Gr0Ryc')">
-                    <div class="thumb-container" style="background-image: url('https://img.youtube.com/vi/BhjK2Gr0Ryc/maxresdefault.jpg');">
-                        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-                    </div>
-                    <div class="video-info">
-                        <span class="video-tag">ENGLISH</span>
-                        <div class="video-title">Professional Setup: Moltbot VPS Guide</div>
-                    </div>
-                </div>
+            <div class="video-grid" id="video-grid-container">
+                <!-- Videos will be injected via JS -->
             </div>
         </section>
 
@@ -397,11 +370,12 @@
                 'nav-install': '安裝指南', 'nav-features': '功能特點', 'nav-videos': '教學影片',
                 'hero-title': 'Clawdbot Guide',
                 'hero-subline': 'THE AI THAT ACTUALLY DOES THINGS.',
-                'hero-subtitle': '讓您的通訊軟體化身超級助理。透過 WhatsApp 或 Telegram，讓 clawdbot (moltbot, OpenClaw) 為您自動處理收件匣、排定行事曆並完成航班登機。您只需專注於重要事務，其餘的交給它。',
+                'hero-subtitle': '自動清理您的收件匣、發送電子郵件、管理日曆並協助您辦理登機手續。這一切，只需透過您常用的 WhatsApp 或 Telegram 即可完成。加入這個名字 clawdbot (moltbot, OpenClaw) 其餘不要亂動',
                 'quick-start': 'clawdbot (moltbot, OpenClaw) 指南教學',
-                'tutorial-header': '📖 展開 clawdbot (moltbot, OpenClaw) 深度安裝步驟 (Full Documentation)',
+                'tutorial-header': '📖 clawdbot (moltbot, OpenClaw) 深度安裝步驟 (Full Documentation)',
                 'features-title': 'What It Does',
                 'videos-title': '影片教學專區',
+                'v-tag-tw': '繁體中文', 'v-tag-cn': '簡體中文', 'v-tag-en': 'ENGLISH',
                 'features': [
                     { icon: 'home', title: '在您的機器上運行', desc: '相容 moltbot 架構，支援 Mac, Windows 或 Linux。Anthropic, OpenAI 或本地模型。預設私密。' },
                     { icon: 'message', title: '任意聊天軟體', desc: '在 WhatsApp, Telegram, Discord, Slack, Signal 甚至 iMessage 中與 AI 對話。支持私訊與群聊。' },
@@ -417,20 +391,25 @@
                     { n: 4, t: '串接通訊軟體 (WhatsApp/Telegram)', c: '根據您的需求啟用 Provider。若使用 WhatsApp，系統會彈出一個 QR Code，請使用手機 App 掃描登入；若使用 Telegram，請向 @BotFather 申請 API Token 並填入設定檔。' },
                     { n: 5, t: '進階：配置本地模型 (Local LLM)', c: 'Clawbot 支援透過 Ollama 連結本地模型。在設定檔中將 PROVIDER 設為 ollama，並指定模型名稱 (如 llama3)。這可以確保您的對話數據完全不離開本機伺服器。' },
                     { n: 6, t: '啟動與測試', c: '執行 npm run dev 或 npm start。當終端機顯示「Ready」時，即可從手機發送第一則訊息測試。建議先嘗試簡單的任務，例如「幫我總結最近的一封 Email」。' }
+                ],
+                'video_items': [
+                    { id: 'OSK9RiohGHo', tag: '繁體中文', title: 'Clawbot 基礎安裝與功能介紹' },
+                    { id: '657wlbtrzG8', tag: '簡體中文', title: '快速部署實戰：openClaw 配置與 API 教學' },
+                    { id: 'BhjK2Gr0Ryc', tag: 'ENGLISH', title: 'Professional Setup: Moltbot VPS Guide' }
                 ]
             },
             'zh-cn': {
-                'nav-install': '安装指南', 'nav-features': '功能特点', 'nav-videos': '教学影片',
+                'nav-install': '安装指南', 'nav-features': '功能特点', 'nav-videos': '教学视频',
                 'hero-title': 'Clawdbot Guide',
                 'hero-subline': 'THE AI THAT ACTUALLY DOES THINGS.',
-                'hero-subtitle': '让您的通讯软件化身为超级助理。通过 WhatsApp 或 Telegram，让 clawdbot (moltbot, OpenClaw) 为您自动处理收件箱、排定日历并完成航班登机。您只需专注于重要事务，其余的交给它。',
+                'hero-subtitle': '自动清理您的收件箱、发送电子邮件、管理日历并协助您办理登机手续。这一切，只需通过您常用的 WhatsApp 或 Telegram 即可完成。加入这个名字 clawdbot (moltbot, OpenClaw) 其余不要乱动',
                 'quick-start': 'clawdbot (moltbot, OpenClaw) 指南教学',
-                'tutorial-header': '📖 展开 clawdbot (moltbot, OpenClaw) 深度安装步骤 (Full Documentation)',
+                'tutorial-header': '📖 clawdbot (moltbot, OpenClaw) 深度安装步骤 (Full Documentation)',
                 'features-title': 'What It Does',
                 'videos-title': '视频教学专区',
                 'features': [
                     { icon: 'home', title: '在您的机器上运行', desc: '兼容 moltbot 架构，支持 Mac, Windows 或 Linux。Anthropic, OpenAI 或本地模型。预设私密。' },
-                    { icon: 'message', title: '任意聊天软件', desc: '在 WhatsApp, Telegram, Discord, Slack, Signal 甚至 iMessage 中与 AI 对話。支持私聊与群聊。' },
+                    { icon: 'message', title: '任意聊天软件', desc: '在 WhatsApp, Telegram, Discord, Slack, Signal 甚至 iMessage 中与 AI 对话。支持私聊与群聊。' },
                     { icon: 'brain', title: '持久记忆', desc: '它会记住您并变得独一无二。您的偏好、您的语境、您的专属 AI。' },
                     { icon: 'globe', title: '浏览器控制', desc: '它可以浏览网页、填写表单并从任何网站提取数据。' },
                     { icon: 'terminal', title: '完整系统权限', desc: '读取与写入文件、运行 Shell 指令、执行脚本。提供沙盒与全权模式。' },
@@ -443,15 +422,20 @@
                     { n: 4, t: '串接通讯软件 (WhatsApp/Telegram)', c: '根据您的需求启用 Provider。若使用 WhatsApp，系统会弹出一個 QR Code，请使用手机 App 扫描登录；若使用 Telegram，请向 @BotFather 申请 API Token 并填入配置文件。' },
                     { n: 5, t: '进阶：配置本地模型 (Local LLM)', c: 'Clawbot 支持通过 Ollama 链接本地模型。在配置文件中将 PROVIDER 设为 ollama，并指定模型名称 (如 llama3)。这可以确保您的对话数据完全不离开本机服务器。' },
                     { n: 6, t: '启动与测试', c: '执行 npm run dev 或 npm start。当终端显示「Ready」时，即可从手机发送第一条消息测试。建议先尝试简单的任务，例如「帮我总结最近的一封 Email」。' }
+                ],
+                'video_items': [
+                    { id: 'OSK9RiohGHo', tag: '繁体中文', title: 'Clawbot 基础安装与功能介绍' },
+                    { id: '657wlbtrzG8', tag: '简体中文', title: '快速部署实战：openClaw 配置与 API 教学' },
+                    { id: 'BhjK2Gr0Ryc', tag: 'ENGLISH', title: 'Professional Setup: Moltbot VPS Guide' }
                 ]
             },
             'en': {
                 'nav-install': 'Install Guide', 'nav-features': 'Features', 'nav-videos': 'Videos',
                 'hero-title': 'Clawdbot Guide',
                 'hero-subline': 'THE AI THAT ACTUALLY DOES THINGS.',
-                'hero-subtitle': 'Turn your favorite messaging app into a powerhouse. With WhatsApp or Telegram, let clawdbot (moltbot, OpenClaw) automate your inbox, manage your calendar, and check you in for flights while you focus on what matters.',
+                'hero-subtitle': 'Clears your inbox, sends emails, manages your calendar, checks you in for flights. All from WhatsApp, Telegram, or any chat app you already use. Added name clawdbot (moltbot, OpenClaw) Do not move the rest',
                 'quick-start': 'clawdbot (moltbot, OpenClaw) Guide',
-                'tutorial-header': '📖 Expand Full clawdbot (moltbot, OpenClaw) Installation Steps',
+                'tutorial-header': '📖 clawdbot (moltbot, OpenClaw) Installation Steps (Full Documentation)',
                 'features-title': 'What It Does',
                 'videos-title': 'Video Tutorials',
                 'features': [
@@ -469,6 +453,11 @@
                     { n: 4, t: 'Linking Chat Apps', c: 'Enable WhatsApp or Telegram in the config. For WhatsApp, you will need to scan a QR code via your mobile device.' },
                     { n: 5, t: 'Local LLM Support', c: 'Optionally set up Ollama to run models locally for 100% privacy by switching the provider to Ollama in settings.' },
                     { n: 6, t: 'Start & Deploy', c: 'Execute "npm run dev". Once you see the "Ready" status, try sending your first task via your chosen chat app.' }
+                ],
+                'video_items': [
+                    { id: 'OSK9RiohGHo', tag: 'Traditional Chinese', title: 'Clawbot Basic Setup & Intro' },
+                    { id: '657wlbtrzG8', tag: 'Simplified Chinese', title: 'Quick Deployment: openClaw Config & API' },
+                    { id: 'BhjK2Gr0Ryc', tag: 'ENGLISH', title: 'Professional Setup: Moltbot VPS Guide' }
                 ]
             }
         };
@@ -477,7 +466,7 @@
             home: '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline>',
             message: '<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>',
             brain: '<path d="M9.5 2A5.5 5.5 0 0 0 4 7.5c0 1.25.4 2.4 1.1 3.33L4 14l3.5-.5c.85.5 1.85.8 2.9.8A5.5 5.5 0 0 0 15.9 10l3.5.5L16 7.17A5.5 5.5 0 0 0 10.5 2h-1z"></path><path d="M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>',
-            globe: '<circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"></path>',
+            globe: '<circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>',
             terminal: '<polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line>',
             puzzle: '<path d="M12.4 13L11 12l1.4-1c.4-.3.6-.8.6-1.3V8a3 3 0 0 0-3-3h-1.7c-.5 0-1-.2-1.3-.6l-1-1.4-1 1.4c-.3.4-.8.6-1.3.6H6a3 3 0 0 0-3 3v1.7c0 .5-.2 1-.6 1.3L1 12l1.4 1c.4.3.6.8.6 1.3V16a3 3 0 0 0 3 3h1.7c.5 0 1 .2 1.3.6l1 1.4 1-1.4c.3-.4.8-.6 1.3-.6H11a3 3 0 0 0 3-3v-1.7c0-.5.2-1 .6-1.3z"></path>'
         };
@@ -514,18 +503,19 @@
                     <p style="color:var(--text-muted); font-size:0.95rem; line-height: 1.7;">${s.c}</p>
                 </div>
             `).join('');
-        }
 
-        function toggleAccordion(header) {
-            const content = document.getElementById('tutorial-content');
-            const chevron = document.getElementById('chevron');
-            if (content.classList.contains('open')) {
-                content.classList.remove('open');
-                chevron.innerText = '▼';
-            } else {
-                content.classList.add('open');
-                chevron.innerText = '▲';
-            }
+            const videoContainer = document.getElementById('video-grid-container');
+            videoContainer.innerHTML = data.video_items.map(v => `
+                <div class="video-card" onclick="playVideo(this, '${v.id}')">
+                    <div class="thumb-container" style="background-image: url('https://img.youtube.com/vi/${v.id}/maxresdefault.jpg');">
+                        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="video-info">
+                        <span class="video-tag">${v.tag}</span>
+                        <div class="video-title">${v.title}</div>
+                    </div>
+                </div>
+            `).join('');
         }
 
         function copyCode(btn) {
