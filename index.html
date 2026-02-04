@@ -6,7 +6,6 @@
     <meta name="description" content="Clawdbot Guide - 詳盡的 Clawbot (moltbot, openClaw) 安裝與部署教學。">
     <title>Clawdbot Guide | The AI That Actually Does Things</title>
     <meta name="google-site-verification" content="XybNdS3Ozj6MLqJ6gzLnaWTylnShH6mo78dCqQ8_TNs" />
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -35,7 +34,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Navigation Bar */
+        /* 導航欄 */
         nav {
             height: var(--nav-height);
             background: rgba(5, 5, 5, 0.85);
@@ -70,7 +69,6 @@
             gap: 10px;
         }
 
-        /* Icon Only Red, No Background Box */
         .logo-icon {
             width: 32px;
             height: 32px;
@@ -90,14 +88,14 @@
         .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: 0.3s; font-weight: 600; }
         .nav-links a:hover { color: var(--text-main); }
 
-        .lang-switcher { display: flex; gap: 8px; }
+        .lang-switcher { display: flex; gap: 6px; flex-wrap: wrap; }
         .lang-btn {
             background: transparent;
             border: 1px solid var(--border-color);
             color: var(--text-muted);
-            padding: 5px 12px;
+            padding: 4px 10px;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             cursor: pointer;
             transition: 0.3s;
         }
@@ -109,7 +107,7 @@
             padding: 120px 20px 100px;
         }
 
-        /* Hero Intro */
+        /* Hero 區塊 */
         .hero {
             text-align: center;
             padding: 80px 0 100px;
@@ -118,7 +116,6 @@
             align-items: center;
         }
         
-        /* Hero Logo - Icon only, large and red */
         .hero-logo-container {
             margin-bottom: 24px;
         }
@@ -169,7 +166,7 @@
         }
         .section-title::before { content: '>'; color: var(--accent-red); }
 
-        /* Terminal Style */
+        /* 終端機樣式 */
         .terminal {
             background: #000;
             border: 1px solid var(--border-color);
@@ -185,7 +182,7 @@
         .code-row code { color: #fff; }
         .copy-trigger { position: absolute; top: 20px; right: 20px; background: transparent; border: 1px solid var(--border-color); color: var(--text-muted); padding: 4px 10px; border-radius: 4px; font-size: 0.7rem; cursor: pointer; }
 
-        /* Accordion Style */
+        /* 手風琴樣式 */
         .accordion {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -213,7 +210,7 @@
         }
         .accordion-content.open { padding: 32px; max-height: 3000px; }
 
-        /* Feature Cards */
+        /* 特色卡片 */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -235,7 +232,7 @@
         .feature-card h3 { font-size: 1.25rem; font-weight: 800; color: #fff; }
         .feature-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
 
-        /* Video Section */
+        /* 影片區塊 */
         .video-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -307,6 +304,8 @@
             <div class="lang-switcher">
                 <button class="lang-btn active" onclick="switchLang('zh-tw')">繁中</button>
                 <button class="lang-btn" onclick="switchLang('zh-cn')">簡中</button>
+                <button class="lang-btn" onclick="switchLang('ja')">JP</button>
+                <button class="lang-btn" onclick="switchLang('th')">TH</button>
                 <button class="lang-btn" onclick="switchLang('en')">EN</button>
             </div>
         </div>
@@ -354,14 +353,14 @@
         <section id="videos">
             <div class="section-title" data-lang="videos-title">影片教學專區</div>
             <div class="video-grid" id="video-grid-container">
-                <!-- Videos will be injected via JS -->
+                <!-- 影片將由 JS 注入 -->
             </div>
         </section>
 
     </div>
 
     <footer>
-        <p>© 2026 Clawdbot Guide | 非官方指南網站</p>
+        <p data-lang="footer-text">© 2026 Clawdbot Guide | 非官方指南網站</p>
     </footer>
 
     <script>
@@ -375,7 +374,7 @@
                 'tutorial-header': '📖 clawdbot (moltbot, OpenClaw) 深度安裝步驟 (Full Documentation)',
                 'features-title': 'What It Does',
                 'videos-title': '影片教學專區',
-                'v-tag-tw': '繁體中文', 'v-tag-cn': '簡體中文', 'v-tag-en': 'ENGLISH',
+                'footer-text': '© 2026 Clawdbot Guide | 非官方指南網站',
                 'features': [
                     { icon: 'home', title: '在您的機器上運行', desc: '相容 moltbot 架構，支援 Mac, Windows 或 Linux。Anthropic, OpenAI 或本地模型。預設私密。' },
                     { icon: 'message', title: '任意聊天軟體', desc: '在 WhatsApp, Telegram, Discord, Slack, Signal 甚至 iMessage 中與 AI 對話。支持私訊與群聊。' },
@@ -407,10 +406,11 @@
                 'tutorial-header': '📖 clawdbot (moltbot, OpenClaw) 深度安装步骤 (Full Documentation)',
                 'features-title': 'What It Does',
                 'videos-title': '视频教学专区',
+                'footer-text': '© 2026 Clawdbot Guide | 非官方指南网站',
                 'features': [
                     { icon: 'home', title: '在您的机器上运行', desc: '兼容 moltbot 架构，支持 Mac, Windows 或 Linux。Anthropic, OpenAI 或本地模型。预设私密。' },
                     { icon: 'message', title: '任意聊天软件', desc: '在 WhatsApp, Telegram, Discord, Slack, Signal 甚至 iMessage 中与 AI 对话。支持私聊与群聊。' },
-                    { icon: 'brain', title: '持久记忆', desc: '它会记住您并变得独一无二。您的偏好、您的语境、您的专属 AI。' },
+                    { icon: 'brain', title: '持久记忆', desc: '它会记住您并变得独特。您的偏好、您的语境、您的专属 AI。' },
                     { icon: 'globe', title: '浏览器控制', desc: '它可以浏览网页、填写表单并从任何网站提取数据。' },
                     { icon: 'terminal', title: '完整系统权限', desc: '读取与写入文件、运行 Shell 指令、执行脚本。提供沙盒与全权模式。' },
                     { icon: 'puzzle', title: '技能与插件', desc: '通过社区技能扩展功能，或自行构建。它甚至可以为自己编写代码。' }
@@ -429,6 +429,70 @@
                     { id: 'BhjK2Gr0Ryc', tag: 'ENGLISH', title: 'Professional Setup: Moltbot VPS Guide' }
                 ]
             },
+            'ja': {
+                'nav-install': 'インストール', 'nav-features': '特徴', 'nav-videos': '動画',
+                'hero-title': 'Clawdbot Guide',
+                'hero-subline': '実際に仕事をするAI。',
+                'hero-subtitle': '受信トレイの整理、メール送信、カレンダー管理、フライトのチェックインを自動化。使い慣れた WhatsApp や Telegram から操作できます。名前 clawdbot (moltbot, OpenClaw) を追加し、他はそのままにしてください。',
+                'quick-start': 'clawdbot (moltbot, OpenClaw) ガイド',
+                'tutorial-header': '📖 clawdbot (moltbot, OpenClaw) 詳細インストール手順 (Full Documentation)',
+                'features-title': '機能紹介',
+                'videos-title': '動画チュートリアル',
+                'footer-text': '© 2026 Clawdbot Guide | 非公式サイト',
+                'features': [
+                    { icon: 'home', title: 'ローカル環境で動作', desc: 'Mac、Windows、Linuxに対応。Anthropic、OpenAI、またはローカルモデルを利用可能。プライバシー重視。' },
+                    { icon: 'message', title: 'お好みのチャットアプリ', desc: 'WhatsApp, Telegram, Discord, Slack, Signal, iMessage でAIと対話可能。個人・グループ両対応。' },
+                    { icon: 'brain', title: '永続的な記憶', desc: 'あなたの好みや文脈を学習し、世界に一つだけのパーソナルAIへと進化します。' },
+                    { icon: 'globe', title: 'ブラウザ操作', desc: 'ウェブサイトの閲覧、フォーム入力、データ抽出をAIが代行します。' },
+                    { icon: 'terminal', title: 'システムへのフルアクセス', desc: 'ファイルの読み書き、シェルコマンドの実行。サンドボックスモードも搭載。' },
+                    { icon: 'puzzle', title: 'スキルとプラグイン', desc: 'コミュニティ製のスキルで機能を拡張。AI自らコードを書いて機能を増やすことも。' }
+                ],
+                'steps': [
+                    { n: 1, t: '事前準備', c: 'Node.js (v18以降) と Git がインストールされていることを確認してください。' },
+                    { n: 2, t: 'プロジェクトの複製', c: 'ターミナルで git clone を実行し、npm install で依存関係をインストールします。' },
+                    { n: 3, t: '環境変数の設定', c: '.env ファイルを作成し、APIキーを入力します。ブラウザ操作には Playwright が必要です。' },
+                    { n: 4, t: 'アプリの連携', c: 'WhatsApp や Telegram を有効にします。QRコードのスキャンや API トークンの入力を行います。' },
+                    { n: 5, t: 'ローカルモデルの設定', c: 'Ollama を使用して完全にオフラインで動作させることも可能です。' },
+                    { n: 6, t: '起動とテスト', c: 'npm run dev を実行。「Ready」と表示されたらメッセージを送ってみましょう。' }
+                ],
+                'video_items': [
+                    { id: 'OSK9RiohGHo', tag: '繁体字中国語', title: 'Clawbot 基本設定と紹介' },
+                    { id: '657wlbtrzG8', tag: '簡体字中国語', title: 'デプロイ実戦：openClaw 設定ガイド' },
+                    { id: 'BhjK2Gr0Ryc', tag: 'ENGLISH', title: 'Professional Setup: Moltbot VPS Guide' }
+                ]
+            },
+            'th': {
+                'nav-install': 'คู่มือติดตั้ง', 'nav-features': 'ฟีเจอร์', 'nav-videos': 'วิดีโอสอน',
+                'hero-title': 'Clawdbot Guide',
+                'hero-subline': 'AI ที่ทำงานให้คุณได้จริง',
+                'hero-subtitle': 'จัดการอีเมล, จัดการปฏิทิน และเช็คอินเที่ยวบินโดยอัตโนมัติ ผ่าน WhatsApp หรือ Telegram ที่คุณใช้อยู่แล้ว เพิ่มชื่อ clawdbot (moltbot, OpenClaw) ส่วนที่เหลือไม่ต้องแก้ไข',
+                'quick-start': 'คู่มือสอน clawdbot (moltbot, OpenClaw)',
+                'tutorial-header': '📖 ขั้นตอนการติดตั้ง clawdbot (moltbot, OpenClaw) แบบละเอียด',
+                'features-title': 'ความสามารถ',
+                'videos-title': 'โซนวิดีโอสอน',
+                'footer-text': '© 2026 Clawdbot Guide | เว็บไซต์คู่มืออย่างไม่เป็นทางการ',
+                'features': [
+                    { icon: 'home', title: 'รันบนเครื่องของคุณเอง', desc: 'รองรับ Mac, Windows หรือ Linux ใช้ได้กับ Anthropic, OpenAI หรือโมเดลโลคอล เป็นส่วนตัวสูงสุด' },
+                    { icon: 'message', title: 'แอปแชทใดก็ได้', desc: 'คุยกับ AI ผ่าน WhatsApp, Telegram, Discord, Slack หรือ iMessage รองรับทั้งแชทส่วนตัวและกลุ่ม' },
+                    { icon: 'brain', title: 'ความจำแม่นยำ', desc: 'จดจำความต้องการและบริบทของคุณ เพื่อเป็น AI ส่วนตัวที่เก่งขึ้นเรื่อยๆ' },
+                    { icon: 'globe', title: 'ควบคุมเบราว์เซอร์', desc: 'สามารถท่องเว็บ กรอกฟอร์ม และดึงข้อมูลจากเว็บไซต์ต่างๆ ได้โดยอัตโนมัติ' },
+                    { icon: 'terminal', title: 'เข้าถึงระบบเต็มรูปแบบ', desc: 'อ่านเขียนไฟล์ รันคำสั่ง Shell หรือสคริปต์ มีทั้งโหมด Sandbox และ Full Access' },
+                    { icon: 'puzzle', title: 'ทักษะและปลั๊กอิน', desc: 'ขยายความสามารถด้วยสกิลจากคอมมูนิตี้ หรือสร้างเองได้ง่ายๆ' }
+                ],
+                'steps': [
+                    { n: 1, t: 'การเตรียมความพร้อม', c: 'ตรวจสอบว่าเครื่องมี Node.js (v18+) และ Git ติดตั้งอยู่เรียบร้อยแล้ว' },
+                    { n: 2, t: 'คัดลอกโปรเจกต์', c: 'ใช้คำสั่ง git clone และรัน npm install เพื่อติดตั้งไลบรารีที่จำเป็น' },
+                    { n: 3, t: 'ตั้งค่า Environment', c: 'ตั้งค่าไฟล์ .env ใส่ API Key ของ Anthropic หรือ OpenAI ให้ถูกต้อง' },
+                    { n: 4, t: 'เชื่อมต่อแอปแชท', c: 'เปิดใช้งาน Provider ที่ต้องการ เช่น WhatsApp (สแกน QR) หรือ Telegram (ใส่ Token)' },
+                    { n: 5, t: 'ขั้นสูง: ใช้ Local LLM', c: 'รองรับการเชื่อมต่อกับ Ollama เพื่อใช้งานโมเดลแบบออฟไลน์ 100%' },
+                    { n: 6, t: 'เริ่มใช้งาน', c: 'รัน npm run dev และเริ่มส่งข้อความทดสอบจากมือถือของคุณได้ทันที' }
+                ],
+                'video_items': [
+                    { id: 'OSK9RiohGHo', tag: 'จีนตัวเต็ม', title: 'แนะนำการติดตั้ง Clawbot เบื้องต้น' },
+                    { id: '657wlbtrzG8', tag: 'จีนตัวย่อ', title: 'การตั้งค่า openClaw และ API แบบรวดเร็ว' },
+                    { id: 'BhjK2Gr0Ryc', tag: 'ENGLISH', title: 'Professional Setup: Moltbot VPS Guide' }
+                ]
+            },
             'en': {
                 'nav-install': 'Install Guide', 'nav-features': 'Features', 'nav-videos': 'Videos',
                 'hero-title': 'Clawdbot Guide',
@@ -438,6 +502,7 @@
                 'tutorial-header': '📖 clawdbot (moltbot, OpenClaw) Installation Steps (Full Documentation)',
                 'features-title': 'What It Does',
                 'videos-title': 'Video Tutorials',
+                'footer-text': '© 2026 Clawdbot Guide | Unofficial Guide Website',
                 'features': [
                     { icon: 'home', title: 'Runs on Your Machine', desc: 'Mac, Windows, or Linux. Works with Anthropic, OpenAI, or local models. Private by default.' },
                     { icon: 'message', title: 'Any Chat App', desc: 'Talk to it on WhatsApp, Telegram, Discord, Slack, Signal, or iMessage. Works in DMs and group chats.' },
@@ -473,20 +538,32 @@
 
         function switchLang(lang) {
             if(!contentData[lang]) lang = 'zh-tw';
+            
+            // 更新按鈕狀態
             document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.getAttribute('onclick').includes(lang));
+                const clickAttr = btn.getAttribute('onclick');
+                if (clickAttr && clickAttr.includes(`'${lang}'`)) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
             });
 
             const data = contentData[lang];
+            
+            // 更新通用文字
             document.querySelectorAll('[data-lang]').forEach(el => {
                 const key = el.getAttribute('data-lang');
                 if (data[key]) el.innerText = data[key];
             });
+            
+            // 更新導航文字
             document.querySelectorAll('[data-lang-nav]').forEach(el => {
                 const key = el.getAttribute('data-lang-nav');
                 if (data[key]) el.innerText = data[key];
             });
 
+            // 更新特色卡片
             const featContainer = document.getElementById('features-container');
             featContainer.innerHTML = data.features.map(f => `
                 <div class="feature-card">
@@ -496,6 +573,7 @@
                 </div>
             `).join('');
 
+            // 更新安裝步驟
             const tutBody = document.getElementById('tutorial-body-content');
             tutBody.innerHTML = data.steps.map(s => `
                 <div class="step-block" style="margin-bottom:30px; border-left: 2px solid var(--accent-red); padding-left: 20px;">
@@ -504,6 +582,7 @@
                 </div>
             `).join('');
 
+            // 更新影片列表
             const videoContainer = document.getElementById('video-grid-container');
             videoContainer.innerHTML = data.video_items.map(v => `
                 <div class="video-card" onclick="playVideo(this, '${v.id}')">
