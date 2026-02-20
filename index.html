@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Clawdbot Guide - 詳盡的 Clawbot (moltbot, openClaw) 安裝與部署教學。">
-    <title>Clawdbot Guide | The AI That Actually Does Things</title>
-    <meta name="google-site-verification" content="XybNdS3Ozj6MLqJ6gzLnaWTylnShH6mo78dCqQ8_TNs" />
+    <meta name="description" content="OpenClaw Guide - 詳盡的 OpenClaw (moltbot, OpenClaw) 安裝與部署教學。">
+    <title>OpenClaw Guide | The AI That Actually Does Things</title>
+     <meta name="google-site-verification" content="XybNdS3Ozj6MLqJ6gzLnaWTylnShH6mo78dCqQ8_TNs" />
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -212,7 +212,7 @@
         }
         .accordion-header {
             padding: 20px 24px;
-            cursor: pointer;
+            cursor: default;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -220,24 +220,22 @@
             transition: 0.2s;
             font-weight: 700;
         }
-        .accordion-header:hover { background: #1a1a1a; }
         .accordion-content {
             padding: 0;
-            max-height: 0;
             overflow: hidden;
             transition: max-height 0.4s ease, padding 0.3s ease;
             background: var(--bg-card);
         }
-        .accordion-content.open { padding: 32px; max-height: 3000px; }
+        .accordion-content.open { padding: 32px; max-height: 5000px; }
 
-        /* 特色卡片 */
-        .features-grid {
+        /* 技能/特色卡片樣格 */
+        .grid-layout {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             margin-bottom: 80px;
         }
-        .feature-card {
+        .grid-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             padding: 32px;
@@ -247,10 +245,10 @@
             flex-direction: column;
             gap: 16px;
         }
-        .feature-card:hover { border-color: var(--accent-red); transform: translateY(-4px); }
-        .feature-icon-svg { width: 32px; height: 32px; stroke: var(--accent-red); fill: none; stroke-width: 2; }
-        .feature-card h3 { font-size: 1.25rem; font-weight: 800; color: #fff; }
-        .feature-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+        .grid-card:hover { border-color: var(--accent-red); transform: translateY(-4px); }
+        .grid-icon-svg { width: 32px; height: 32px; stroke: var(--accent-red); fill: none; stroke-width: 2; }
+        .grid-card h3 { font-size: 1.25rem; font-weight: 800; color: #fff; }
+        .grid-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
 
         /* 影片區塊 */
         .video-grid {
@@ -313,18 +311,19 @@
                     <div class="logo-icon">
                         <svg viewBox="0 0 24 24"><path d="M12,2C11.45,2,11,2.45,11,3v1.09C7.03,4.57,4,7.93,4,12c0,0.38,0.03,0.75,0.08,1.11L2.12,14.07c-0.45,0.3-0.58,0.91-0.28,1.36 c0.3,0.45,0.91,0.58,1.36,0.28l1.37-0.91C5.55,16.89,8.44,19,12,19s6.45-2.11,7.43-4.2l1.37,0.91c0.45,0.3,1.06,0.17,1.36-0.28 c0.3-0.45,0.17-1.06-0.28-1.36l-1.96-0.96C19.97,12.75,20,12.38,20,12c0-4.07-3.03-7.43-7-7.91V3C13,2.45,12.55,2,12,2z M7,10 c0.55,0,1,0.45,1,1c0,0.55-0.45,1-1,1s-1-0.45-1-1C6,10.45,6.45,10,7,10z M17,10c0.55,0,1,0.45,1,1c0,0.55-0.45,1-1,1s-1-0.45-1-1 C16,10.45,16.45,10,17,10z M12,20c-1.1,0-2,0.9-2,2h4C14,20.9,13.1,20,12,20z"/></svg>
                     </div>
-                    Clawdbot Guide
+                    OpenClaw Guide
                 </a>
                 <div class="nav-links">
                     <a href="#install" data-lang-nav="nav-install">安裝指南</a>
+                    <a href="#skills" data-lang-nav="nav-skills">OpenClaw 技能</a>
                     <a href="#features" data-lang-nav="nav-features">功能特點</a>
                     <a href="#videos" data-lang-nav="nav-videos">教學影片</a>
                 </div>
             </div>
             <div class="lang-select-wrapper">
                 <select class="lang-select" id="langSelector" onchange="switchLang(this.value)">
-                    <option value="zh-tw">繁體中文</option>
-                    <option value="zh-cn">简体中文</option>
+                    <option value="zh-tw">繁中</option>
+                    <option value="zh-cn">簡中</option>
                     <option value="ko">한국어</option>
                     <option value="ja">日本語</option>
                     <option value="th">ไทย</option>
@@ -341,13 +340,14 @@
             <div class="hero-logo-container">
                 <svg viewBox="0 0 24 24"><path d="M12,2C11.45,2,11,2.45,11,3v1.09C7.03,4.57,4,7.93,4,12c0,0.38,0.03,0.75,0.08,1.11L2.12,14.07c-0.45,0.3-0.58,0.91-0.28,1.36 c0.3,0.45,0.91,0.58,1.36,0.28l1.37-0.91C5.55,16.89,8.44,19,12,19s6.45-2.11,7.43-4.2l1.37,0.91c0.45,0.3,1.06,0.17,1.36-0.28 c0.3-0.45,0.17-1.06-0.28-1.36l-1.96-0.96C19.97,12.75,20,12.38,20,12c0-4.07-3.03-7.43-7-7.91V3C13,2.45,12.55,2,12,2z M7,10 c0.55,0,1,0.45,1,1c0,0.55-0.45,1-1,1s-1-0.45-1-1C6,10.45,6.45,10,7,10z M17,10c0.55,0,1,0.45,1,1c0,0.55-0.45,1-1,1s-1-0.45-1-1 C16,10.45,16.45,10,17,10z M12,20c-1.1,0-2,0.9-2,2h4C14,20.9,13.1,20,12,20z"/></svg>
             </div>
-            <h1 data-lang="hero-title">Clawdbot Guide</h1>
+            <h1 data-lang="hero-title">OpenClaw Guide</h1>
             <div class="sub-headline" data-lang="hero-subline">THE AI THAT ACTUALLY DOES THINGS.</div>
             <p data-lang="hero-subtitle">自動清理您的收件匣、發送電子郵件、管理日曆並協助您辦理登機手續。這一切，只需透過您常用的 WhatsApp 或 Telegram 即可完成。</p>
         </header>
 
+        <!-- Install Guide Section -->
         <section id="install">
-            <div class="section-title" data-lang="quick-start">clawdbot (moltbot, OpenClaw) 指南教學</div>
+            <div class="section-title" data-lang="quick-start">OpenClaw (moltbot, OpenClaw) 指南教學</div>
             <div class="terminal">
                 <div class="terminal-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
                 <button class="copy-trigger" onclick="copyCode(this)">Copy</button>
@@ -359,8 +359,8 @@
         </section>
 
         <div class="accordion">
-            <div class="accordion-header" style="cursor: default;">
-                <span data-lang="tutorial-header">📖 clawdbot (moltbot, OpenClaw) 深度安裝步驟 (Full Documentation)</span>
+            <div class="accordion-header">
+                <span data-lang="tutorial-header">📖 OpenClaw (moltbot, OpenClaw) 深度安裝步驟 (Full Documentation)</span>
             </div>
             <div class="accordion-content open" id="tutorial-content">
                 <div class="tutorial-body" id="tutorial-body-content">
@@ -368,12 +368,21 @@
             </div>
         </div>
 
-        <section id="features">
-            <div class="section-title" data-lang="features-title">What It Does</div>
-            <div class="features-grid" id="features-container">
+        <!-- NEW: OpenClaw Skills Section -->
+        <section id="skills">
+            <div class="section-title" data-lang="skills-title">OpenClaw 技能插件</div>
+            <div class="grid-layout" id="skills-container">
             </div>
         </section>
 
+        <!-- Features Section -->
+        <section id="features">
+            <div class="section-title" data-lang="features-title">What It Does</div>
+            <div class="grid-layout" id="features-container">
+            </div>
+        </section>
+
+        <!-- Videos Section -->
         <section id="videos">
             <div class="section-title" data-lang="videos-title">影片教學專區</div>
             <div class="video-grid" id="video-grid-container">
@@ -383,21 +392,27 @@
     </div>
 
     <footer>
-        <p data-lang="footer-text">© 2026 Clawdbot Guide | 非官方指南網站</p>
+        <p data-lang="footer-text">© 2026 OpenClaw Guide | 非官方指南網站</p>
     </footer>
 
     <script>
         const contentData = {
             'zh-tw': {
-                'nav-install': '安裝指南', 'nav-features': '功能特點', 'nav-videos': '教學影片',
-                'hero-title': 'Clawdbot Guide',
+                'nav-install': '安裝指南', 'nav-skills': 'OpenClaw 技能', 'nav-features': '功能特點', 'nav-videos': '教學影片',
+                'hero-title': 'OpenClaw Guide',
                 'hero-subline': 'THE AI THAT ACTUALLY DOES THINGS.',
-                'hero-subtitle': '自動清理您的收件匣、發送電子郵件、管理日曆並協助您辦理登機手續。這一切，只需透過您常用的 WhatsApp 或 Telegram 即可完成。加入這個名字 clawdbot (moltbot, OpenClaw) 其餘不要亂動',
-                'quick-start': 'clawdbot (moltbot, OpenClaw) 指南教學',
-                'tutorial-header': '📖 clawdbot (moltbot, OpenClaw) 深度安裝步驟 (Full Documentation)',
+                'hero-subtitle': '自動清理您的收件匣、發送電子郵件、管理日曆並協助您辦理登機手續。這一切，只需透過您常用的 WhatsApp 或 Telegram 即可完成。讓 OpenClaw (moltbot, OpenClaw) 為您自動化繁瑣任務。',
+                'quick-start': 'OpenClaw (moltbot, OpenClaw) 指南教學',
+                'tutorial-header': '📖 OpenClaw (moltbot, OpenClaw) 深度安裝步驟 (Full Documentation)',
+                'skills-title': 'OpenClaw 技能插件',
                 'features-title': 'What It Does',
                 'videos-title': '影片教學專區',
-                'footer-text': '© 2026 Clawdbot Guide | 非官方指南網站',
+                'footer-text': '© 2026 OpenClaw Guide | 非官方指南網站',
+                'skills': [
+                    { icon: 'globe', title: '瀏覽器操作', desc: '這能讓 OpenClaw 讀取網頁內容、搜尋資訊，甚至幫您登入網站完成自動化表單填寫。' },
+                    { icon: 'terminal', title: '系統控制', desc: '透過技能可以執行終端機指令、讀寫本地文件，將您的電腦變成 AI 的延伸大腦。' },
+                    { icon: 'puzzle', title: '自定義技能', desc: '您可以編寫簡單的 JavaScript 來擴充 OpenClaw 的能力，串接任何外部 API 或服務。' }
+                ],
                 'features': [
                     { icon: 'home', title: '在您的機器上運行', desc: '相容 moltbot 架構，支援 Mac, Windows 或 Linux。Anthropic, OpenAI 或本地模型。預設私密。' },
                     { icon: 'message', title: '任意聊天軟體', desc: '在 WhatsApp, Telegram, Discord, Slack, Signal 甚至 iMessage 中與 AI 對話。支持私訊與群聊。' },
@@ -409,160 +424,152 @@
                 'steps': [
                     { n: 1, t: '系統需求與環境準備', c: '確保您的 Mac、Windows 或 Linux 系統已安裝 Node.js (建議 v18 以上版本) 以及 Git 終端工具。' },
                     { n: 2, t: '複製原始碼 (Clone Project)', c: '在終端機輸入 git clone 並連結至官方儲存庫。執行 npm install 安裝必要套件。' },
-                    { n: 3, t: '設定 .env 環境變數', c: '將 .env.example 重新命名為 .env。填入您的 API KEY。若要瀏覽器控制，需安裝 Playwright。' },
-                    { n: 4, t: '串接通訊軟體', c: '啟用 Provider。若使用 WhatsApp，掃描彈出的 QR Code 即可登入。' },
-                    { n: 5, t: '進階：配置本地模型', c: '支援透過 Ollama 連結本地模型，確保數據完全不離開本機。' },
-                    { n: 6, t: '啟動與測試', c: '執行 npm start。當顯示 Ready 時，即可發送訊息測試。' }
+                    { n: 3, t: '設定 .env 環境變數', c: '將 .env.example 重新命名為 .env。填入您的 API KEY。' },
+                    { n: 4, t: '串接通訊軟體 (WhatsApp/Telegram)', c: '根據您的需求啟用 Provider。使用 WhatsApp 時，掃描 QR Code 即可登入。' },
+                    { n: 5, t: '進階：配置本地模型 (Local LLM)', c: '支援透過 Ollama 連結本地模型，確保您的對話數據完全不離開本機。' },
+                    { n: 6, t: '啟動與測試', c: '執行 npm run dev 或 npm start。當顯示 Ready 時，即可發送訊息測試。' }
                 ],
                 'video_items': [
-                    { id: 'OSK9RiohGHo', tag: '繁體中文', title: 'Clawbot 基礎安裝與功能介紹' },
-                    { id: '657wlbtrzG8', tag: '簡體中文', title: '快速部署實戰：openClaw 配置與 API 教學' },
-                    { id: 'BhjK2Gr0Ryc', tag: 'ENGLISH', title: 'Professional Setup: Moltbot VPS Guide' }
-                ]
-            },
-            'vi': {
-                'nav-install': 'Hướng dẫn cài đặt', 'nav-features': 'Tính năng', 'nav-videos': 'Video hướng dẫn',
-                'hero-title': 'Clawdbot Guide',
-                'hero-subline': 'AI THỰC SỰ LÀM VIỆC HIỆU QUẢ.',
-                'hero-subtitle': 'Tự động dọn dẹp hộp thư đến, gửi email, quản lý lịch và hỗ trợ check-in chuyến bay. Tất cả chỉ thông qua WhatsApp hoặc Telegram quen thuộc của bạn.',
-                'quick-start': 'Hướng dẫn clawdbot (moltbot, OpenClaw)',
-                'tutorial-header': '📖 Các bước cài đặt chuyên sâu clawdbot (Full Documentation)',
-                'features-title': 'What It Does',
-                'videos-title': 'Khu vực Video hướng dẫn',
-                'footer-text': '© 2026 Clawdbot Guide | Trang web hướng dẫn không chính thức',
-                'features': [
-                    { icon: 'home', title: 'Chạy trên máy của bạn', desc: 'Tương thích với cấu trúc moltbot, hỗ trợ Mac, Windows hoặc Linux. Riêng tư tuyệt đối.' },
-                    { icon: 'message', title: 'Mọi ứng dụng chat', desc: 'Trò chuyện với AI trên WhatsApp, Telegram, Discord, Slack. Hỗ trợ chat cá nhân và nhóm.' },
-                    { icon: 'brain', title: 'Bộ nhớ vĩnh viễn', desc: 'Nó sẽ ghi nhớ bạn và trở nên độc nhất. AI dành riêng cho cá nhân bạn.' },
-                    { icon: 'globe', title: 'Điều khiển trình duyệt', desc: 'Nó có thể duyệt web, điền biểu mẫu và trích xuất dữ liệu từ bất kỳ trang web nào.' },
-                    { icon: 'terminal', title: 'Toàn quyền hệ thống', desc: 'Đọc và ghi file, chạy lệnh Shell, thực thi script. Có chế độ Sandbox.' },
-                    { icon: 'puzzle', title: 'Kỹ năng & Plugin', desc: 'Mở rộng tính năng thông qua cộng đồng hoặc tự xây dựng kỹ năng riêng.' }
-                ],
-                'steps': [
-                    { n: 1, t: 'Yêu cầu hệ thống', c: 'Đảm bảo máy Mac, Windows hoặc Linux đã cài đặt Node.js (v18+) và công cụ Git.' },
-                    { n: 2, t: 'Sao chép mã nguồn (Clone)', c: 'Nhập git clone vào terminal và chạy npm install để cài đặt các gói cần thiết.' },
-                    { n: 3, t: 'Cấu hình biến môi trường .env', c: 'Đổi tên .env.example thành .env. Nhập API KEY của bạn vào.' },
-                    { n: 4, t: 'Kết nối ứng dụng nhắn tin', c: 'Kích hoạt Provider. Nếu dùng WhatsApp, quét mã QR hiện ra để đăng nhập.' },
-                    { n: 5, t: 'Nâng cao: Cấu hình Model nội bộ', c: 'Hỗ trợ kết nối Model nội bộ qua Ollama, đảm bảo dữ liệu không rời khỏi máy.' },
-                    { n: 6, t: 'Khởi động và Kiểm tra', c: 'Chạy lệnh npm start. Khi hiện Ready, bạn có thể gửi tin nhắn để kiểm tra.' }
-                ],
-                'video_items': [
-                    { id: 'OSK9RiohGHo', tag: 'Tiếng Hoa Phồn Thể', title: 'Cài đặt cơ bản và giới thiệu tính năng Clawbot' },
-                    { id: '657wlbtrzG8', tag: 'Tiếng Hoa Giản Thể', title: 'Triển khai thực tế: Cấu hình openClaw & API' },
+                    { id: 'OSK9RiohGHo', tag: '繁體中文', title: 'OpenClaw 基礎安裝與功能介紹' },
+                    { id: '657wlbtrzG8', tag: '簡體中文', title: '快速部署實戰：OpenClaw 配置與 API 教學' },
                     { id: 'BhjK2Gr0Ryc', tag: 'ENGLISH', title: 'Professional Setup: Moltbot VPS Guide' }
                 ]
             },
             'zh-cn': {
-                'nav-install': '安装指南', 'nav-features': '功能特点', 'nav-videos': '教学视频',
-                'hero-title': 'Clawdbot Guide',
+                'nav-install': '安装指南', 'nav-skills': 'OpenClaw 技能', 'nav-features': '功能特点', 'nav-videos': '教学视频',
+                'hero-title': 'OpenClaw Guide',
                 'hero-subline': 'THE AI THAT ACTUALLY DOES THINGS.',
-                'hero-subtitle': '自动清理您的收件箱、发送电子邮件、管理日历并协助您办理登机手续。这一切，只需通过您常用的 WhatsApp 或 Telegram 即可完成。',
-                'quick-start': 'clawdbot (moltbot, OpenClaw) 指南教学',
-                'tutorial-header': '📖 clawdbot (moltbot, OpenClaw) 深度安装步骤 (Full Documentation)',
+                'hero-subtitle': '自动清理您的收件箱、发送电子邮件、管理日历并协助您办理登机手续。让 OpenClaw (moltbot, OpenClaw) 为您高效处理事务。',
+                'quick-start': 'OpenClaw (moltbot, OpenClaw) 指南教学',
+                'tutorial-header': '📖 OpenClaw (moltbot, OpenClaw) 深度安装步骤 (Full Documentation)',
+                'skills-title': 'OpenClaw 技能插件',
                 'features-title': 'What It Does',
                 'videos-title': '视频教学专区',
-                'footer-text': '© 2026 Clawdbot Guide | 非官方指南网站',
+                'footer-text': '© 2026 OpenClaw Guide | 非官方指南网站',
+                'skills': [
+                    { icon: 'globe', title: '浏览器操作', desc: '让 OpenClaw 能够读取网页、搜索信息，甚至自动填写表单。' },
+                    { icon: 'terminal', title: '系统控制', desc: '通过技能执行终端指令、读写文件，让电脑成为 AI 的延伸。' },
+                    { icon: 'puzzle', title: '自定义技能', desc: '编写简单的 JavaScript 即可扩展能力，连接任何 API。' }
+                ],
                 'features': [
                     { icon: 'home', title: '在您的机器上运行', desc: '兼容 moltbot 架构，支持 Mac, Windows 或 Linux。' },
-                    { icon: 'message', title: '任意聊天软件', desc: '在 WhatsApp, Telegram 等平台与 AI 对话。支持私聊与群聊。' },
+                    { icon: 'message', title: '任意聊天软件', desc: '在 WhatsApp, Telegram 等平台与 AI 对话。' },
                     { icon: 'brain', title: '持久记忆', desc: '它会记住您并变得独特。您的偏好、您的专属 AI。' },
                     { icon: 'globe', title: '浏览器控制', desc: '它可以浏览网页、填写表单并提取数据。' },
-                    { icon: 'terminal', title: '完整系统权限', desc: '读取与写入文件、运行 Shell 指令。提供沙盒模式。' },
+                    { icon: 'terminal', title: '完整系统权限', desc: '读取与写入文件、运行 Shell 指令。' },
                     { icon: 'puzzle', title: '技能与插件', desc: '通过社区技能扩展功能，或自行构建。' }
                 ],
                 'steps': [
                     { n: 1, t: '系统需求与环境准备', c: '确保已安装 Node.js (v18+) 以及 Git 终端工具。' },
                     { n: 2, t: '克隆源码', c: '输入 git clone 并执行 npm install 自动下载依赖包。' },
                     { n: 3, t: '设置 .env 环境变量', c: '重命名 .env.example 为 .env。填入 API KEY。' },
-                    { n: 4, t: '串接通讯软件', c: '根据需求启用 Provider。使用 WhatsApp 时扫码登录。' },
+                    { n: 4, t: '串接通讯软件', c: '启用 Provider。使用 WhatsApp 时扫码登录。' },
                     { n: 5, t: '进阶：配置本地模型', c: '支持通过 Ollama 链接本地模型，保护隐私。' },
                     { n: 6, t: '启动与测试', c: '执行 npm start。显示 Ready 时即可从手机发送消息。' }
                 ],
                 'video_items': [
-                    { id: 'OSK9RiohGHo', tag: '繁体中文', title: 'Clawbot 基础安装与功能介绍' },
-                    { id: '657wlbtrzG8', tag: '简体中文', title: '快速部署实战：openClaw 配置与 API 教学' },
+                    { id: 'OSK9RiohGHo', tag: '繁体中文', title: 'OpenClaw 基础安装与功能介绍' },
+                    { id: '657wlbtrzG8', tag: '简体中文', title: '快速部署实战：OpenClaw 配置与 API 教学' },
                     { id: 'BhjK2Gr0Ryc', tag: 'ENGLISH', title: 'Professional Setup: Moltbot VPS Guide' }
                 ]
             },
             'ko': {
-                'nav-install': '설치 가이드', 'nav-features': '주요 기능', 'nav-videos': '튜토리얼 영상',
-                'hero-title': 'Clawdbot Guide',
+                'nav-install': '설치 가이드', 'nav-skills': 'OpenClaw 스킬', 'nav-features': '주요 기능', 'nav-videos': '튜토리얼 영상',
+                'hero-title': 'OpenClaw Guide',
                 'hero-subline': '실제로 일을 하는 AI.',
-                'hero-subtitle': '받은 편지함 정리, 이메일 발송, 캘린더 관리, 항공기 체크인을 자동으로 처리합니다. 평소 사용하는 WhatsApp이나 Telegram을 통해 이 모든 것이 가능합니다.',
-                'quick-start': 'clawdbot (moltbot, OpenClaw) 가이드 교육',
-                'tutorial-header': '📖 clawdbot (moltbot, OpenClaw) 심층 설치 단계 (전체 문서)',
+                'hero-subtitle': '받은 편지함 정리, 이메일 발송, 캘린더 관리, 항공기 체크인을 자동으로 처리합니다.',
+                'quick-start': 'OpenClaw (moltbot, OpenClaw) 가이드 교육',
+                'tutorial-header': '📖 OpenClaw (moltbot, OpenClaw) 심층 설치 단계 (전체 문서)',
+                'skills-title': 'OpenClaw 스킬 플러그인',
                 'features-title': 'What It Does',
                 'videos-title': '영상 교육 센터',
-                'footer-text': '© 2026 Clawdbot Guide | 비공식 가이드 웹사이트',
+                'footer-text': '© 2026 OpenClaw Guide | 비공식 가이드 웹사이트',
+                'skills': [
+                    { icon: 'globe', title: '브라우저 제어', desc: 'OpenClaw가 웹 페이지를 읽고 정보를 검색하며 양식을 자동 작성하도록 합니다.' },
+                    { icon: 'terminal', title: '시스템 제어', desc: '터미널 명령 실행 및 파일 읽기/쓰기를 통해 컴퓨터를 AI의 뇌로 만듭니다.' },
+                    { icon: 'puzzle', title: '커스텀 스킬', desc: '간단한 JavaScript로 기능을 확장하고 외부 API와 연결할 수 있습니다.' }
+                ],
                 'features': [
-                    { icon: 'home', title: '내 기기에서 실행', desc: 'moltbot 아키텍처와 호환되며 Mac, Windows, Linux를 지원합니다. 프라이버시 우선.' },
-                    { icon: 'message', title: '모든 채팅 앱 지원', desc: 'WhatsApp, Telegram, Discord 등에서 대화하세요. 개인 및 그룹 채팅 지원.' },
-                    { icon: 'brain', title: '지속적인 기억', desc: '사용자를 기억하고 고유한 존재가 됩니다. 당신만의 전용 AI.' },
-                    { icon: 'globe', title: '브라우저 제어', desc: '웹 서핑, 양식 작성, 데이터 추출을 AI가 대신 수행합니다.' },
-                    { icon: 'terminal', title: '시스템 전체 권한', desc: '파일 읽기/쓰기, Shell 명령어 실행. 샌드박스 및 전체 권한 모드 제공.' },
-                    { icon: 'puzzle', title: '스킬 및 플러그인', desc: '커뮤니티 스킬로 기능을 확장하거나 직접 구축하세요.' }
+                    { icon: 'home', title: '내 기기에서 실행', desc: 'moltbot 아키텍처와 호환되며 Mac, Windows, Linux를 지원합니다.' },
+                    { icon: 'message', title: '모든 채팅 앱 지원', desc: 'WhatsApp, Telegram, Discord 등에서 대화하세요.' },
+                    { icon: 'brain', title: '지속적인 기억', desc: '사용자를 기억하고 고유한 존재가 됩니다.' },
+                    { icon: 'globe', title: '브라우저 제어', desc: '웹 서핑, 양식 작성, 데이터 추출을 대신 수행합니다.' },
+                    { icon: 'terminal', title: '시스템 전체 권한', desc: '파일 읽기/쓰기, Shell 명령어 실행.' },
+                    { icon: 'puzzle', title: '스킬 및 플러그인', desc: '커뮤니티 스킬로 기능을 확장하세요.' }
                 ],
                 'steps': [
                     { n: 1, t: '시스템 요구 사항', c: 'Mac, Windows 또는 Linux에 Node.js(v18 이상)와 Git이 설치되어 있는지 확인하세요.' },
-                    { n: 2, t: '소스 코드 복제', c: '터미널에서 git clone을 실행한 후 npm install을 통해 필수 패키지를 설치하세요.' },
+                    { n: 2, t: '소스 코드 복제', c: '터미널에서 git clone을 실행한 후 npm install을 실행하세요.' },
                     { n: 3, t: '.env 환경 변수 설정', c: '.env.example을 .env로 변경하고 API KEY를 입력하세요.' },
-                    { n: 4, t: '채팅 앱 연결', c: 'Provider를 활성화하세요. WhatsApp의 경우 QR 코드를 스캔하여 로그인합니다.' },
-                    { n: 5, t: '고급: 로컬 모델 설정', c: 'Ollama를 통해 로컬 모델을 연결하여 데이터 유출 없이 사용 가능합니다.' },
+                    { n: 4, t: '채팅 앱 연결', c: 'WhatsApp의 경우 QR 코드를 스캔하여 로그인합니다.' },
+                    { n: 5, t: '고급: 로컬 모델 설정', c: 'Ollama를 통해 로컬 모델을 연결할 수 있습니다.' },
                     { n: 6, t: '시작 및 테스트', c: 'npm start를 실행하세요. Ready 표시가 뜨면 첫 메시지를 보내보세요.' }
                 ],
                 'video_items': [
-                    { id: 'OSK9RiohGHo', tag: '번체 중문', title: 'Clawbot 기본 설치 및 기능 소개' },
-                    { id: '657wlbtrzG8', tag: '간체 중문', title: '빠른 배포 실전: openClaw 설정 가이드' },
+                    { id: 'OSK9RiohGHo', tag: '번체 중문', title: 'OpenClaw 기본 설치 및 기능 소개' },
+                    { id: '657wlbtrzG8', tag: '간체 중문', title: '빠른 배포 실전: OpenClaw 설정 가이드' },
                     { id: 'BhjK2Gr0Ryc', tag: 'ENGLISH', title: 'Professional Setup: Moltbot VPS Guide' }
                 ]
             },
             'ja': {
-                'nav-install': 'インストール', 'nav-features': '特徴', 'nav-videos': '動画',
-                'hero-title': 'Clawdbot Guide',
+                'nav-install': 'インストール', 'nav-skills': 'OpenClaw スキル', 'nav-features': '特徴', 'nav-videos': '動画',
+                'hero-title': 'OpenClaw Guide',
                 'hero-subline': '実際に仕事をするAI。',
-                'hero-subtitle': '受信トレイの整理、メール送信、カレンダー管理を自動化。使い慣れた WhatsApp や Telegram から操作できます。',
-                'quick-start': 'clawdbot (moltbot, OpenClaw) ガイド',
-                'tutorial-header': '📖 clawdbot (moltbot, OpenClaw) 詳細インストール手順',
+                'hero-subtitle': '受信トレイの整理、メール送信、カレンダー管理を自動化。OpenClaw があなたの日常をサポートします。',
+                'quick-start': 'OpenClaw (moltbot, OpenClaw) ガイド',
+                'tutorial-header': '📖 OpenClaw (moltbot, OpenClaw) 詳細インストール手順',
+                'skills-title': 'OpenClaw スキルプラグイン',
                 'features-title': '機能紹介',
                 'videos-title': '動画チュートリアル',
-                'footer-text': '© 2026 Clawdbot Guide | 非公式サイト',
+                'footer-text': '© 2026 OpenClaw Guide | 非公式サイト',
+                'skills': [
+                    { icon: 'globe', title: 'ブラウザ操作', desc: 'ウェブページの読み取り、情報検索、フォームの自動入力が可能です。' },
+                    { icon: 'terminal', title: 'システム制御', desc: '端末コマンドの実行やファイルの読み書きを行い、PCをAIの脳として使えます。' },
+                    { icon: 'puzzle', title: 'カスタムスキル', desc: '簡単な JavaScript で機能を拡張し、外部 API と連携できます。' }
+                ],
                 'features': [
                     { icon: 'home', title: 'ローカル環境で動作', desc: 'Mac、Windows、Linuxに対応。プライバシー重視。' },
-                    { icon: 'message', title: 'お好みのチャットアプリ', desc: 'WhatsApp, Telegram 等でAIと対話可能。' },
-                    { icon: 'brain', title: '永続的な記憶', desc: 'あなたの好みや文脈を学習し、進化します。' },
-                    { icon: 'globe', title: 'ブラウザ操作', desc: 'ウェブサイトの閲覧、フォーム入力を代行します。' },
+                    { icon: 'message', title: 'お好みのチャットアプリ', desc: 'WhatsApp, Telegram 等で対話可能。' },
+                    { icon: 'brain', title: '永続的な記憶', desc: 'あなたの好みや文脈を学習します。' },
+                    { icon: 'globe', title: 'ブラウザ操作', desc: 'ウェブサイトの閲覧、入力を代行します。' },
                     { icon: 'terminal', title: 'システムアクセス', desc: 'ファイルの読み書き、コマンド実行が可能です。' },
-                    { icon: 'puzzle', title: '拡張性', desc: 'コミュニティ製のスキルで機能を拡張できます。' }
+                    { icon: 'puzzle', title: '拡張性', desc: 'スキルで機能を拡張できます。' }
                 ],
                 'steps': [
                     { n: 1, t: '事前準備', c: 'Node.js (v18以降) と Git を用意してください。' },
                     { n: 2, t: '複製', c: 'git clone を実行し、npm install で準備します。' },
                     { n: 3, t: '環境設定', c: '.env を作成し、APIキーを入力します。' },
-                    { n: 4, t: '連携', c: 'WhatsApp などの QRコードをスキャンして連携します。' },
+                    { n: 4, t: '連携', c: 'WhatsApp などの QRコードをスキャンします。' },
                     { n: 5, t: 'ローカルLLM', c: 'Ollama を使用してオフライン動作も可能です。' },
-                    { n: 6, t: '起動', c: 'npm start を実行し、メッセージを送ってください。' }
+                    { n: 6, t: '起動', c: 'npm start を実行し、テストを行ってください。' }
                 ],
                 'video_items': [
-                    { id: 'OSK9RiohGHo', tag: '繁体中国語', title: 'Clawbot 基本設定と紹介' },
+                    { id: 'OSK9RiohGHo', tag: '繁体中国語', title: 'OpenClaw 基本設定と紹介' },
                     { id: '657wlbtrzG8', tag: '簡体中国語', title: 'デプロイ実戦ガイド' },
                     { id: 'BhjK2Gr0Ryc', tag: 'ENGLISH', title: 'Professional Setup: Moltbot VPS Guide' }
                 ]
             },
             'th': {
-                'nav-install': 'คู่มือติดตั้ง', 'nav-features': 'ฟีเจอร์', 'nav-videos': 'วิดีโอสอน',
-                'hero-title': 'Clawdbot Guide',
+                'nav-install': 'คู่มือติดตั้ง', 'nav-skills': 'OpenClaw สกิล', 'nav-features': 'ฟีเจอร์', 'nav-videos': 'วิดีโอสอน',
+                'hero-title': 'OpenClaw Guide',
                 'hero-subline': 'AI ที่ทำงานให้คุณได้จริง',
-                'hero-subtitle': 'จัดการอีเมล, จัดการปฏิทิน และเช็คอินเที่ยวบินโดยอัตโนมัติ ผ่าน WhatsApp หรือ Telegram',
-                'quick-start': 'คู่มือสอน clawdbot (moltbot, OpenClaw)',
-                'tutorial-header': '📖 ขั้นตอนการติดตั้ง clawdbot แบบละเอียด',
+                'hero-subtitle': 'จัดการอีเมล, จัดการปฏิทิน และเช็คอินเที่ยวบินโดยอัตโนมัติ ให้ OpenClaw ดูแลงานแทนคุณ',
+                'quick-start': 'คู่มือสอน OpenClaw (moltbot, OpenClaw)',
+                'tutorial-header': '📖 ขั้นตอนการติดตั้ง OpenClaw แบบละเอียด',
+                'skills-title': 'OpenClaw สกิลปลั๊กอิน',
                 'features-title': 'ความสามารถ',
                 'videos-title': 'โซนวิดีโอสอน',
-                'footer-text': '© 2026 Clawdbot Guide | เว็บไซต์อย่างไม่เป็นทางการ',
+                'footer-text': '© 2026 OpenClaw Guide | เว็บไซต์อย่างไม่เป็นทางการ',
+                'skills': [
+                    { icon: 'globe', title: 'ควบคุมเบราว์เซอร์', desc: 'ช่วยให้ OpenClaw อ่านเว็บ ค้นหาข้อมูล และกรอกฟอร์มอัตโนมัติได้' },
+                    { icon: 'terminal', title: 'ควบคุมระบบ', desc: 'รันคำสั่ง terminal และอ่านเขียนไฟล์ เปลี่ยนคอมพิวเตอร์เป็นสมอง AI' },
+                    { icon: 'puzzle', title: 'สกิลกำหนดเอง', desc: 'เขียน JavaScript ง่ายๆ เพื่อขยายความสามารถและเชื่อมต่อ API' }
+                ],
                 'features': [
-                    { icon: 'home', title: 'รันบนเครื่องของคุณเอง', desc: 'รองรับ Mac, Windows หรือ Linux เป็นส่วนตัวสูงสุด' },
-                    { icon: 'message', title: 'แอปแชทใดก็ได้', desc: 'คุยผ่าน WhatsApp, Telegram, Discord และอื่นๆ' },
+                    { icon: 'home', title: 'รันบนเครื่องของคุณเอง', desc: 'รองรับ Mac, Windows หรือ Linux' },
+                    { icon: 'message', title: 'แอปแชทใดก็ได้', desc: 'คุยผ่าน WhatsApp, Telegram และอื่นๆ' },
                     { icon: 'brain', title: 'ความจำแม่นยำ', desc: 'จดจำความต้องการและบริบทของคุณ' },
-                    { icon: 'globe', title: 'ควบคุมเบราว์เซอร์', desc: 'สามารถท่องเว็บ กรอกฟอร์ม ได้โดยอัตโนมัติ' },
+                    { icon: 'globe', title: 'ควบคุมเบราว์เซอร์', desc: 'ท่องเว็บ กรอกฟอร์ม ได้โดยอัตโนมัติ' },
                     { icon: 'terminal', title: 'เข้าถึงระบบ', desc: 'อ่านเขียนไฟล์ รันคำสั่ง Shell ได้เต็มที่' },
                     { icon: 'puzzle', title: 'ทักษะเสริม', desc: 'ขยายความสามารถด้วยสกิลจากคอมมูนิตี้' }
                 ],
@@ -575,21 +582,65 @@
                     { n: 6, t: 'เริ่มรัน', c: 'รัน npm start และส่งข้อความทดสอบได้เลย' }
                 ],
                 'video_items': [
-                    { id: 'OSK9RiohGHo', tag: 'จีนตัวเต็ม', title: 'แนะนำการติดตั้ง Clawbot' },
+                    { id: 'OSK9RiohGHo', tag: 'จีนตัวเต็ม', title: 'แนะนำการติดตั้ง OpenClaw' },
                     { id: '657wlbtrzG8', tag: 'จีนตัวย่อ', title: 'การตั้งค่า API แบบรวดเร็ว' },
                     { id: 'BhjK2Gr0Ryc', tag: 'ENGLISH', title: 'Professional Setup: Moltbot VPS Guide' }
                 ]
             },
+            'vi': {
+                'nav-install': 'Hướng dẫn cài đặt', 'nav-skills': 'Kỹ năng OpenClaw', 'nav-features': 'Tính năng', 'nav-videos': 'Video hướng dẫn',
+                'hero-title': 'OpenClaw Guide',
+                'hero-subline': 'AI THỰC SỰ LÀM VIỆC HIỆU QUẢ.',
+                'hero-subtitle': 'Tự động dọn dẹp hộp thư đến, gửi email, quản lý lịch và hỗ trợ check-in qua WhatsApp hoặc Telegram.',
+                'quick-start': 'Hướng dẫn OpenClaw (moltbot, OpenClaw)',
+                'tutorial-header': '📖 Các bước cài đặt chuyên sâu OpenClaw (Full Documentation)',
+                'skills-title': 'Plugin kỹ năng OpenClaw',
+                'features-title': 'What It Does',
+                'videos-title': 'Khu vực Video hướng dẫn',
+                'footer-text': '© 2026 OpenClaw Guide | Trang web hướng dẫn không chính thức',
+                'skills': [
+                    { icon: 'globe', title: 'Điều khiển trình duyệt', desc: 'Cho phép OpenClaw đọc nội dung web, tìm kiếm và tự động điền biểu mẫu.' },
+                    { icon: 'terminal', title: 'Điều khiển hệ thống', desc: 'Chạy lệnh terminal, đọc ghi file, biến máy tính thành bộ não AI.' },
+                    { icon: 'puzzle', title: 'Kỹ năng tùy chỉnh', desc: 'Viết JavaScript đơn giản để mở rộng khả năng và kết nối API bên ngoài.' }
+                ],
+                'features': [
+                    { icon: 'home', title: 'Chạy trên máy của bạn', desc: 'Tương thích với moltbot, hỗ trợ Mac, Windows hoặc Linux.' },
+                    { icon: 'message', title: 'Mọi ứng dụng chat', desc: 'Trò chuyện trên WhatsApp, Telegram, Discord.' },
+                    { icon: 'brain', title: 'Bộ nhớ vĩnh viễn', desc: 'AI dành riêng cho cá nhân bạn.' },
+                    { icon: 'globe', title: 'Điều khiển trình duyệt', desc: 'Duyệt web và trích xuất dữ liệu tự động.' },
+                    { icon: 'terminal', title: 'Toàn quyền hệ thống', desc: 'Đọc ghi file và chạy lệnh Shell.' },
+                    { icon: 'puzzle', title: 'Kỹ năng & Plugin', desc: 'Mở rộng tính năng qua cộng đồng.' }
+                ],
+                'steps': [
+                    { n: 1, t: 'Yêu cầu hệ thống', c: 'Đảm bảo máy đã cài đặt Node.js (v18+) và công cụ Git.' },
+                    { n: 2, t: 'Sao chép mã nguồn', c: 'Nhập git clone và chạy npm install.' },
+                    { n: 3, t: 'Cấu hình .env', c: 'Đổi tên .env.example thành .env và nhập API KEY.' },
+                    { n: 4, t: 'Kết nối ứng dụng', c: 'Kích hoạt Provider và quét mã QR để đăng nhập.' },
+                    { n: 5, t: 'Nâng cao: Cấu hình Model nội bộ', c: 'Hỗ trợ kết nối qua Ollama để bảo mật dữ liệu.' },
+                    { n: 6, t: 'Khởi động', c: 'Chạy lệnh npm start và gửi tin nhắn để kiểm tra.' }
+                ],
+                'video_items': [
+                    { id: 'OSK9RiohGHo', tag: 'Tiếng Hoa Phồn Thể', title: 'Cài đặt và giới thiệu OpenClaw' },
+                    { id: '657wlbtrzG8', tag: 'Tiếng Hoa Giản Thể', title: 'Triển khai thực tế: Cấu hình OpenClaw' },
+                    { id: 'BhjK2Gr0Ryc', tag: 'ENGLISH', title: 'Professional Setup: Moltbot VPS Guide' }
+                ]
+            },
             'en': {
-                'nav-install': 'Install Guide', 'nav-features': 'Features', 'nav-videos': 'Videos',
-                'hero-title': 'Clawdbot Guide',
+                'nav-install': 'Install Guide', 'nav-skills': 'OpenClaw Skills', 'nav-features': 'Features', 'nav-videos': 'Videos',
+                'hero-title': 'OpenClaw Guide',
                 'hero-subline': 'THE AI THAT ACTUALLY DOES THINGS.',
                 'hero-subtitle': 'Clears your inbox, sends emails, manages your calendar. All from WhatsApp or Telegram.',
-                'quick-start': 'clawdbot (moltbot, OpenClaw) Guide',
-                'tutorial-header': '📖 clawdbot (moltbot, OpenClaw) Installation Steps',
+                'quick-start': 'OpenClaw (moltbot, OpenClaw) Guide',
+                'tutorial-header': '📖 OpenClaw (moltbot, OpenClaw) Installation Steps',
+                'skills-title': 'OpenClaw Skills & Plugins',
                 'features-title': 'What It Does',
                 'videos-title': 'Video Tutorials',
-                'footer-text': '© 2026 Clawdbot Guide | Unofficial Guide Website',
+                'footer-text': '© 2026 OpenClaw Guide | Unofficial Guide Website',
+                'skills': [
+                    { icon: 'globe', title: 'Browser Control', desc: 'Enables OpenClaw to read web pages, search info, and automate form filling.' },
+                    { icon: 'terminal', title: 'System Access', desc: 'Run terminal commands and read/write files, making your PC an AI extension.' },
+                    { icon: 'puzzle', title: 'Custom Skills', desc: 'Write simple JavaScript to extend capabilities or connect to any external API.' }
+                ],
                 'features': [
                     { icon: 'home', title: 'Runs on Your Machine', desc: 'Mac, Windows, or Linux. Private by default.' },
                     { icon: 'message', title: 'Any Chat App', desc: 'Talk to it on WhatsApp, Telegram, Discord, and more.' },
@@ -607,7 +658,7 @@
                     { n: 6, t: 'Start & Deploy', c: 'Run npm start and send your first task.' }
                 ],
                 'video_items': [
-                    { id: 'OSK9RiohGHo', tag: 'Trad. Chinese', title: 'Clawbot Basic Setup' },
+                    { id: 'OSK9RiohGHo', tag: 'Trad. Chinese', title: 'OpenClaw Basic Setup' },
                     { id: '657wlbtrzG8', tag: 'Simp. Chinese', title: 'Quick Deployment Guide' },
                     { id: 'BhjK2Gr0Ryc', tag: 'ENGLISH', title: 'Professional Setup: Moltbot VPS Guide' }
                 ]
@@ -639,10 +690,21 @@
                 if (data[key]) el.innerText = data[key];
             });
 
+            // 更新 Skills
+            const skillsContainer = document.getElementById('skills-container');
+            skillsContainer.innerHTML = data.skills.map(s => `
+                <div class="grid-card">
+                    <svg class="grid-icon-svg" viewBox="0 0 24 24">${icons[s.icon]}</svg>
+                    <h3>${s.title}</h3>
+                    <p>${s.desc}</p>
+                </div>
+            `).join('');
+
+            // 更新 Features
             const featContainer = document.getElementById('features-container');
             featContainer.innerHTML = data.features.map(f => `
-                <div class="feature-card">
-                    <svg class="feature-icon-svg" viewBox="0 0 24 24">${icons[f.icon]}</svg>
+                <div class="grid-card">
+                    <svg class="grid-icon-svg" viewBox="0 0 24 24">${icons[f.icon]}</svg>
                     <h3>${f.title}</h3>
                     <p>${f.desc}</p>
                 </div>
